@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./css/Mic.css";
 var MediaStreamRecorder = require("msr");
 let mediaRecorder;
-
+let blobURL, BLOB;
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
-    let [audioplayvisible, setaudioplayvisible] = useState("none");
+    let [class_property_audioplayvisible, class_property_setaudioplayvisible] =
+        useState("none");
 
     function start_recording() {
         let mediaConstraints = {
@@ -17,7 +18,8 @@ function Mic() {
             mediaRecorder.mimeType = "audio/wav"; // check this line for audio/wav
             mediaRecorder.ondataavailable = function (blob) {
                 // POST/PUT "Blob" using FormData/XHR2
-                var blobURL = URL.createObjectURL(blob);
+                BLOB = blob;
+                blobURL = URL.createObjectURL(blob);
                 document.getElementById("player").src = blobURL;
             };
             mediaRecorder.start(30000);
@@ -32,7 +34,7 @@ function Mic() {
     }
 
     function stop_recording() {
-        setaudioplayvisible("flex");
+        class_property_setaudioplayvisible("flex");
         console.log("stopped!!");
         mediaRecorder.stop();
     }
@@ -72,14 +74,40 @@ function Mic() {
             </div>
 
             <section
-                style={{ display: audioplayvisible }}
+                style={{ display: class_property_audioplayvisible }}
                 className="audioplayer"
             >
                 Your Audio:
                 <audio id="player" src="" controls="controls"></audio>
+                <button
+                    onClick={() => {
+                        send_data();
+                    }}
+                >
+                    Send <i class="fa-solid fa-square-check"></i>
+                </button>
+                <button>
+                    Cancel <i class="fa-solid fa-ban"></i>
+                </button>
             </section>
         </section>
     );
 }
 
 export default Mic;
+function send_data() {
+    const payload = new FormData();
+    let currtime = new Date();
+    let name = currtime.getTime();
+    payload.append("audio", BLOB, name + ".wav");
+    fetch("http://localhost:5000/audiorecv", {
+        // fetch("https://httpbin.org/post", {
+        method: "POST", // or "PUT"
+        body: payload,
+        // No content-type! With FormData obect, Fetch API sets this automatically.
+        // Doing so manually can lead to an error
+    })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+}
