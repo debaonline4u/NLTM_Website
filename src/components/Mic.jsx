@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "./css/Mic.css";
+import axios from "axios";
 var MediaStreamRecorder = require("msr");
+
 let mediaRecorder;
 let blobURL, BLOB;
+
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
     let [class_property_audioplayvisible, class_property_setaudioplayvisible] =
@@ -84,10 +87,10 @@ function Mic() {
                         send_data();
                     }}
                 >
-                    Send <i class="fa-solid fa-square-check"></i>
+                    Send <i className="fa-solid fa-square-check"></i>
                 </button>
                 <button>
-                    Cancel <i class="fa-solid fa-ban"></i>
+                    Cancel <i className="fa-solid fa-ban"></i>
                 </button>
             </section>
         </section>
@@ -100,13 +103,8 @@ function send_data() {
     let currtime = new Date();
     let name = currtime.getTime();
     payload.append("audio", BLOB, name + ".wav");
-    fetch("http://localhost:5000/audiorecv", {
-        // fetch("https://httpbin.org/post", {
-        method: "POST", // or "PUT"
-        body: payload,
-        // No content-type! With FormData obect, Fetch API sets this automatically.
-        // Doing so manually can lead to an error
-    })
+    axios
+        .post("http://localhost:5000/audiorecv", payload)
         .then((res) => res.json())
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
