@@ -103,6 +103,7 @@ function send_data() {
     let currtime = new Date();
     let name = currtime.getTime();
     payload.append("audio", BLOB, name + ".wav");
+
     axios
         .post("http://localhost:5000/audiorecv", payload)
         .then((res) => res.json())
