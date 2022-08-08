@@ -21,8 +21,9 @@ def home():
     return "home page"
 
 # creating Application Config to save the audio files [ Place the path according to your OS / Storage ]
+# TODO: in production we need to use the absolute path here
 app.config["AUDIO_UPLOADS"] = './audio_files'
-app.config["FEATURE_EXE_PATH"] = 'C:/Users/athar/PycharmProjects/IIT-Mandi-Project/NLTM_Website/Backend/feature_extractor'
+app.config["FEATURE_EXE_PATH"] = './feature_extractor'
 
 
 # route to receive the audio file from front end
