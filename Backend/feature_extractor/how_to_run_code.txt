@@ -1,0 +1,12 @@
+
+example.wav: audio file for which feature is extracted
+test123: output name of the csv file
+BabelMulti: Option for selecting the weight from "nn_weights" directory
+
+
+**** Run the below command to get the csv file containing extracted features ****
+**** Change the audiofile name and csv output filename as needed ****  
+
+python mkhaudio2bottleneck.py BabelMulti example.wav test123
+
+
