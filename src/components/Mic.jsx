@@ -1,42 +1,28 @@
 import React, { useState } from "react";
 import "./css/Mic.css";
-var MediaStreamRecorder = require("msr");
-let mediaRecorder;
 let blobURL, BLOB;
+
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
     let [class_property_audioplayvisible, class_property_setaudioplayvisible] =
         useState("none");
 
     function start_recording() {
-        let mediaConstraints = {
-            audio: true,
-        };
-
-        function onMediaSuccess(stream) {
-            mediaRecorder = new MediaStreamRecorder(stream);
-            mediaRecorder.mimeType = "audio/wav"; // check this line for audio/wav
-            mediaRecorder.ondataavailable = function (blob) {
-                // POST/PUT "Blob" using FormData/XHR2
-                BLOB = blob;
-                blobURL = URL.createObjectURL(blob);
-                document.getElementById("player").src = blobURL;
-            };
-            mediaRecorder.start(30000);
-        }
-
-        function onMediaError(e) {
-            console.error("media error", e);
-        }
-
+        console.log(window.recorderJSAudioRecoder);
+        window.recorderJSAudioRecoder.record();
         console.log("started!!");
-        navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
     }
 
     function stop_recording() {
+        window.recorderJSAudioRecoder.stop();
         class_property_setaudioplayvisible("flex");
-        console.log("stopped!!");
-        mediaRecorder.stop();
+        window.recorderJSAudioRecoder.exportWAV((blob) => {
+            // POST/PUT "Blob" using FormData/XHR2
+            console.log(">>>>>>>>>> Tadaaaaaaaaaaa!!!!!");
+            BLOB = blob;
+            blobURL = URL.createObjectURL(blob);
+            document.getElementById("player").src = blobURL;
+        });
     }
 
     return (
@@ -84,10 +70,10 @@ function Mic() {
                         send_data();
                     }}
                 >
-                    Send <i class="fa-solid fa-square-check"></i>
+                    Send <i className="fa-solid fa-square-check"></i>
                 </button>
                 <button>
-                    Cancel <i class="fa-solid fa-ban"></i>
+                    Cancel <i className="fa-solid fa-ban"></i>
                 </button>
             </section>
         </section>
