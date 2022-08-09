@@ -12,6 +12,7 @@ function Mic() {
     let [is_file_available, set_is_file_available] = useState(false);
     let [predicted_language, set_predicted_language] = useState("");
     let [audioFileName, setAudioFileName] = useState("");
+    let [showFeedback, setshowFeedback] = useState(false);
 
     function start_recording() {
         let mediaConstraints = {
@@ -89,11 +90,16 @@ function Mic() {
                 <Send
                     set_predicted_language={set_predicted_language}
                     setAudioFileName={setAudioFileName}
+                    setshowFeedback={setshowFeedback}
                 />
-                <Feedback
-                    predicted_language={predicted_language}
-                    audioFileName={audioFileName}
-                />
+                {showFeedback ? (
+                    <Feedback
+                        predicted_language={predicted_language}
+                        audioFileName={audioFileName}
+                    />
+                ) : (
+                    ""
+                )}
             </div>
         </section>
     );

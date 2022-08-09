@@ -106,12 +106,14 @@ function Send(props) {
         };
 
         let GLOBAL_URL = process.env.REACT_APP_GLOBAL_URL;
+        let POST_URL = GLOBAL_URL + "/audiorecv";
 
         axios
-            .post(GLOBAL_URL + "/audiorecv", payload, options)
+            .post(POST_URL, payload, options)
             .then((res) => {
                 console.log(res.data);
                 props.set_predicted_language(res.data.predicted_lang);
+                props.setshowFeedback(true);
             })
             .catch((err) => console.log(err));
     }
