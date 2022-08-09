@@ -24,6 +24,8 @@ function Send(props) {
             case UPLOAD_STATUS.UPLOADED:
                 setuploadText("UPLOADED");
                 break;
+            default:
+                break;
         }
     }, [STATUS]);
     return (
@@ -32,7 +34,7 @@ function Send(props) {
 
             <audio id="player" src="" controls="controls"></audio>
 
-            {STATUS != UPLOAD_STATUS.STOPPED && (
+            {STATUS !== UPLOAD_STATUS.STOPPED && (
                 <>
                     <span>{uploadText}</span>
                     <div className="loader">
@@ -50,7 +52,7 @@ function Send(props) {
                         send_data();
                         setSTATUS(UPLOAD_STATUS.UPLOADING);
                     }}
-                    disabled={STATUS != UPLOAD_STATUS.STOPPED}
+                    disabled={STATUS !== UPLOAD_STATUS.STOPPED}
                 >
                     Send <i className="fa-solid fa-square-check"></i>
                 </button>
@@ -59,7 +61,7 @@ function Send(props) {
                         cancel();
                     }}
                     className="btn btn-danger m-2"
-                    disabled={STATUS != UPLOAD_STATUS.STOPPED}
+                    disabled={STATUS !== UPLOAD_STATUS.STOPPED}
                 >
                     Cancel <i className="fa-solid fa-ban"></i>
                 </button>
@@ -88,7 +90,7 @@ function Send(props) {
                 console.log(
                     loaded + "kb of " + total + "kb | " + loaderPercent
                 );
-                if (loaded == total) {
+                if (loaded === total) {
                     setSTATUS(UPLOAD_STATUS.UPLOADED);
 
                     // automatically reset the upload after 5s to stopped so as to remove the progress bar from UI
