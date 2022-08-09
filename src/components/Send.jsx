@@ -66,10 +66,12 @@ function Send(props) {
             </div>
         </section>
     );
+
     function cancel() {
         document.getElementById("player").src = null;
         setSTATUS(UPLOAD_STATUS.STOPPED);
     }
+
     async function send_data() {
         let blobURL = document.getElementById("player").src;
 
@@ -103,6 +105,7 @@ function Send(props) {
             .post("http://localhost:5000/audiorecv", payload, options)
             .then((res) => {
                 console.log(res.data);
+                props.set_predicted_language(res.data.predicted_lang);
             })
             .catch((err) => console.log(err));
     }

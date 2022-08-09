@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./css/Mic.css";
+import Feedback from "./Feedback";
 import Send from "./Send";
 var MediaStreamRecorder = require("msr");
 
@@ -9,6 +10,7 @@ let blobURL, BLOB;
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
     let [is_file_available, set_is_file_available] = useState(false);
+    let [predicted_language, set_predicted_language] = useState("");
 
     function start_recording() {
         let mediaConstraints = {
@@ -77,9 +79,14 @@ function Mic() {
 
             <div
                 className="send-wrapper"
-                style={{ display: is_file_available ? "flex" : "none" }}
+                style={{
+                    display: is_file_available ? "flex" : "none",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
             >
-                <Send />
+                <Send set_predicted_language={set_predicted_language} />
+                <Feedback predicted_language={predicted_language} />
             </div>
         </section>
     );
