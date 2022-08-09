@@ -81,7 +81,9 @@ function Send(props) {
         const payload = new FormData();
         let currtime = new Date();
         let name = currtime.getTime();
-        payload.append("audio", BLOB, name + ".wav");
+        name = name + ".wav";
+        props.setAudioFileName(name);
+        payload.append("audio", BLOB, name);
 
         const options = {
             onUploadProgress: (progressEvent) => {
@@ -103,8 +105,10 @@ function Send(props) {
             },
         };
 
+        let GLOBAL_URL = process.env.REACT_APP_GLOBAL_URL;
+
         axios
-            .post("http://localhost:5000/audiorecv", payload, options)
+            .post(GLOBAL_URL + "/audiorecv", payload, options)
             .then((res) => {
                 console.log(res.data);
                 props.set_predicted_language(res.data.predicted_lang);
