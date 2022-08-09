@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./css/Mic.css";
-import axios from "axios";
+import Send from "./Send";
 var MediaStreamRecorder = require("msr");
 
 let mediaRecorder;
@@ -8,8 +8,7 @@ let blobURL, BLOB;
 
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
-    let [class_property_audioplayvisible, class_property_setaudioplayvisible] =
-        useState("none");
+    let [is_file_available, set_is_file_available] = useState(false);
 
     function start_recording() {
         let mediaConstraints = {
@@ -37,7 +36,7 @@ function Mic() {
     }
 
     function stop_recording() {
-        class_property_setaudioplayvisible("flex");
+        set_is_file_available(true);
         console.log("stopped!!");
         mediaRecorder.stop();
     }
@@ -76,37 +75,14 @@ function Mic() {
                 <h1>{micstatus ? "Listening..." : "Not Listening"}</h1>
             </div>
 
-            <section
-                style={{ display: class_property_audioplayvisible }}
-                className="audioplayer"
+            <div
+                className="send-wrapper"
+                style={{ display: is_file_available ? "flex" : "none" }}
             >
-                Your Audio:
-                <audio id="player" src="" controls="controls"></audio>
-                <button
-                    onClick={() => {
-                        send_data();
-                    }}
-                >
-                    Send <i className="fa-solid fa-square-check"></i>
-                </button>
-                <button>
-                    Cancel <i className="fa-solid fa-ban"></i>
-                </button>
-            </section>
+                <Send />
+            </div>
         </section>
     );
 }
 
 export default Mic;
-function send_data() {
-    const payload = new FormData();
-    let currtime = new Date();
-    let name = currtime.getTime();
-    payload.append("audio", BLOB, name + ".wav");
-
-    axios
-        .post("http://localhost:5000/audiorecv", payload)
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-}
