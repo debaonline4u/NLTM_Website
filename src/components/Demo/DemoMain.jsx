@@ -5,10 +5,11 @@ import Send from "./Send";
 var MediaStreamRecorder = require("msr");
 
 let mediaRecorder;
-let blobURL, BLOB;
+let blobURL;
 
 function Mic() {
     let [micstatus, setmicstatus] = useState(false);
+    let [disable_mic, set_disable_mic] = useState(false);
     let [show_send_wrapper, set_show_send_wrapper] = useState(false);
     let [predicted_language, set_predicted_language] = useState("");
     let [audioFileName, setAudioFileName] = useState("");
@@ -25,9 +26,8 @@ function Mic() {
                 mediaRecorder.mimeType = "audio/wav"; // check this line for audio/wav
                 mediaRecorder.ondataavailable = function (blob) {
                     // POST/PUT "Blob" using FormData/XHR2
-                    BLOB = blob;
                     blobURL = URL.createObjectURL(blob);
-                    document.getElementById("player").src = blobURL;
+                    // document.getElementById("player").src = blobURL;
                 };
             },
             (e) => {
@@ -51,15 +51,19 @@ function Mic() {
             <div className="container-2">
                 <div
                     className={
-                        "toggle-sound " + (micstatus ? "toggle-sound-anim" : "")
+                        "toggle-sound " +
+                        (micstatus ? "toggle-sound-anim " : "") +
+                        (disable_mic ? " disable" : "")
                     }
                     onClick={() => {
+                        if (disable_mic) return;
                         micstatus = !micstatus;
                         if (micstatus) {
                             setmicstatus(true);
                             start_recording();
                         } else {
                             setmicstatus(false);
+                            set_disable_mic(true);
                             stop_recording();
                         }
                     }}
@@ -80,28 +84,34 @@ function Mic() {
                 <h1>{micstatus ? "Listening..." : "Not Listening"}</h1>
             </div>
 
-            <div
-                className="send-wrapper"
-                style={{
-                    display: show_send_wrapper ? "flex" : "none",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}
-            >
-                <Send
-                    set_predicted_language={set_predicted_language}
-                    setAudioFileName={setAudioFileName}
-                    setshowFeedback={setshowFeedback}
-                />
-                {showFeedback ? (
-                    <Feedback
-                        predicted_language={predicted_language}
-                        audioFileName={audioFileName}
+            {show_send_wrapper && (
+                <div
+                    className="send-wrapper"
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <Send
+                        blobURL={blobURL}
+                        set_predicted_language={set_predicted_language}
+                        setAudioFileName={setAudioFileName}
+                        setshowFeedback={setshowFeedback}
+                        set_show_send_wrapper={set_show_send_wrapper}
+                        set_disable_mic={set_disable_mic}
                     />
-                ) : (
-                    ""
-                )}
-            </div>
+                    {showFeedback ? (
+                        <Feedback
+                            predicted_language={predicted_language}
+                            audioFileName={audioFileName}
+                        />
+                    ) : (
+                        ""
+                    )}
+                </div>
+            )}
         </section>
     );
 }
