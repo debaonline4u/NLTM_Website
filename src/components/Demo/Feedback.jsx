@@ -9,76 +9,98 @@ function Feedback(props) {
 
     if (feedbacksent)
         return (
-            <>
+            <div id="features" className="text-center">
+                <div
+                    className="predicted-language"
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                    }}
+                >
+                    <h4>The Predicted Language is:&nbsp;&nbsp;&nbsp;</h4>
+                </div>
+                <div className="container">
+                    <div
+                        className="col-md-10 col-md-offset-1 section-title"
+                        style={{ marginBottom: "10px" }}
+                    >
+                        <h2>{props.predicted_language}</h2>
+                    </div>
+                </div>
                 <h1 style={{ padding: "30px" }}>Thank You for the Feedback!</h1>
-            </>
+            </div>
         );
 
     return (
         <section>
-            <div
-                className="predicted-language"
-                style={{ display: "flex", justifyContent: "center" }}
-            >
-                <h4>The Predicted Language is:&nbsp;&nbsp;&nbsp;</h4>
-                <h2
+            <div id="features" className="text-center">
+                <div
+                    className="predicted-language"
                     style={{
-                        borderBottom: "3px solid #6372ff",
-                        color: "#6372ff",
+                        display: "flex",
+                        justifyContent: "center",
                     }}
                 >
-                    {props.predicted_language}
-                </h2>
-            </div>
-            <div
-                className="classify"
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    flexDirection: "column",
-                }}
-            >
-                <h3>Are you Satisfied with the predicted Language?</h3>
-                <div className="buttons">
-                    <button
-                        className="btn btn-success"
-                        style={{ margin: "10px", padding: "5px 30px" }}
-                        onClick={() => {
-                            selected_language = props.predicted_language;
-                            finish();
-                        }}
-                    >
-                        <h4 style={{ color: "white" }}>Yes</h4>
-                    </button>
-                    <button
-                        className="btn btn-danger"
-                        style={{ margin: "10px", padding: "5px 32px" }}
-                        onClick={() => {
-                            setlanguage_satisfied(false);
-                        }}
-                    >
-                        <h4 style={{ color: "white" }}>No</h4>
-                    </button>
+                    <h4>The Predicted Language is:&nbsp;&nbsp;&nbsp;</h4>
                 </div>
-                <br />
-                {!language_satisfied && (
-                    <>
-                        Ok, then which language was that among this?
-                        <br />
-                        <div
-                            className="language-buttons"
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                flexWrap: "wrap",
-                                alignItems: "center",
-                                maxWidth: "640px",
+                <div className="container">
+                    <div
+                        className="col-md-10 col-md-offset-1 section-title"
+                        style={{ marginBottom: "10px" }}
+                    >
+                        <h2>{props.predicted_language}</h2>
+                    </div>
+                </div>
+                <div
+                    className="classify"
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexDirection: "column",
+                    }}
+                >
+                    <h3>Are you Satisfied with the predicted Language?</h3>
+                    <div className="buttons">
+                        <button
+                            className="btn btn-success"
+                            style={{ margin: "10px", padding: "5px 30px" }}
+                            onClick={() => {
+                                selected_language = props.predicted_language;
+                                finish();
                             }}
                         >
-                            {renderButtons()}
-                        </div>
-                    </>
-                )}
+                            <h4 style={{ color: "white" }}>Yes</h4>
+                        </button>
+                        <button
+                            className="btn btn-danger"
+                            style={{ margin: "10px", padding: "5px 32px" }}
+                            onClick={() => {
+                                setlanguage_satisfied(false);
+                            }}
+                        >
+                            <h4 style={{ color: "white" }}>No</h4>
+                        </button>
+                    </div>
+                    <br />
+                    {!language_satisfied && (
+                        <>
+                            Ok, then which language was that among this?
+                            <br />
+                            <div
+                                className="language-buttons"
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    flexWrap: "wrap",
+                                    alignItems: "center",
+                                    maxWidth: "640px",
+                                }}
+                            >
+                                {renderButtons()}
+                            </div>
+                        </>
+                    )}
+                </div>
             </div>
         </section>
     );
