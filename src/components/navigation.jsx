@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Navigation = (props) => {
+    let [isvisible, setisvisible] = useState(false);
     return (
         <nav id="menu" className="navbar navbar-default navbar-fixed-top">
             <div className="container">
@@ -10,6 +12,7 @@ export const Navigation = (props) => {
                         className="navbar-toggle collapsed"
                         data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1"
+                        onClick={() => setisvisible(!isvisible)}
                     >
                         {" "}
                         <span className="sr-only">Toggle navigation</span>{" "}
@@ -23,20 +26,22 @@ export const Navigation = (props) => {
                 </div>
 
                 <div
-                    className="collapse navbar-collapse"
+                    className={
+                        (isvisible ? "" : "collapse") + " navbar-collapse"
+                    }
                     id="bs-example-navbar-collapse-1"
                 >
                     <ul className="nav navbar-nav navbar-right">
-                        <li>
+                        <li onClick={auto_closenavbar_on_mobile}>
                             <Link className="page-scroll" to="/home">
                                 Home
                             </Link>
                         </li>
-                        <li>
+                        <li onClick={auto_closenavbar_on_mobile}>
                             <Link to="/about">Team</Link>
                         </li>
 
-                        <li>
+                        <li onClick={auto_closenavbar_on_mobile}>
                             <Link
                                 to="/demo"
                                 style={{
@@ -57,4 +62,7 @@ export const Navigation = (props) => {
             </div>
         </nav>
     );
+    function auto_closenavbar_on_mobile() {
+        setisvisible(false);
+    }
 };

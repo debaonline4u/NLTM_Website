@@ -58,8 +58,8 @@ ol {
 ul,
 ol {
     padding: 0;
-    webkit-padding: 0;
-    moz-padding: 0;
+    --webkit-padding: 0;
+    --moz-padding: 0;
 }
 hr {
     height: 2px;
@@ -208,7 +208,7 @@ a:focus,
     display: table;
     width: 100%;
     padding: 0;
-    background: url("https://nltm-lid.iitmandi.ac.in/Home/690d998f8a76f846b3905c26f33ef4a6.jpg")
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/IIT_Mandi_North_Campus_Bird_eye.jpg/2560px-IIT_Mandi_North_Campus_Bird_eye.jpg")
         center center no-repeat;
     background-color: #e5e5e5;
     -webkit-background-size: cover;
@@ -217,7 +217,7 @@ a:focus,
     -o-background-size: cover;
 }
 .intro .overlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.302);
 }
 .intro h1 {
     font-family: "Raleway", sans-serif;
