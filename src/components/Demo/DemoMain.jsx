@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/Mic.css";
+import "./css/DemoMain.css";
 import Feedback from "./Feedback";
 import Send from "./Send";
 var MediaStreamRecorder = require("msr");
@@ -47,7 +47,7 @@ function Mic() {
 
     return (
         <section className="mic">
-            <div className="container">
+            <div className="container-2">
                 <div
                     className={
                         "toggle-sound " + (micstatus ? "toggle-sound-anim" : "")

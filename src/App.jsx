@@ -1,14 +1,70 @@
+import { useState, useEffect } from "react";
+import { Navigation } from "./components/navigation";
+import { Header } from "./components/header";
+import { Features } from "./components/features";
+import { About } from "./components/about";
+import { Team } from "./components/Team";
+import { Contact } from "./components/contact";
+import JsonData from "./data/data.json";
+import SmoothScroll from "smooth-scroll";
+import DemoMain from "./components/Demo/DemoMain";
+import ReactDOM from "react-dom/client";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+} from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import Mic from "./components/Mic";
 
-function App() {
+export const scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 1000,
+    speedAsDuration: true,
+});
+
+const App = () => {
+    const [landingPageData, setLandingPageData] = useState({});
+    useEffect(() => {
+        setLandingPageData(JsonData);
+    }, []);
+
     return (
-        <div className="App">
-            <Header />
-            <Mic />
+        <div>
+            <Router>
+                {/* Header Should be in all pages*/}
+                <Navigation />
+
+                {/* Routes here */}
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home" />} />
+                    {/* Home Route */}
+                    <Route
+                        path="/home"
+                        element={
+                            <>
+                                <Header data={landingPageData.Header} />
+                                <Features data={landingPageData.Features} />
+                            </>
+                        }
+                    />
+
+                    {/* About Route */}
+                    <Route
+                        path="/about"
+                        element={
+                            <>
+                                <About data={landingPageData.About} />
+                                <Team data={landingPageData.Team} />
+                            </>
+                        }
+                    />
+                    <Route path="/demo" element={<DemoMain />} />
+                </Routes>
+            </Router>
+
+            <Contact data={landingPageData.Contact} />
         </div>
     );
-}
+};
 
 export default App;
