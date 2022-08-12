@@ -7,6 +7,14 @@ import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
+import DemoMain from "./components/Demo/DemoMain";
+import ReactDOM from "react-dom/client";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+} from "react-router-dom";
 import "./App.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -22,11 +30,38 @@ const App = () => {
 
     return (
         <div>
-            <Navigation />
-            <Header data={landingPageData.Header} />
-            <Features data={landingPageData.Features} />
-            <About data={landingPageData.About} />
-            <Team data={landingPageData.Team} />
+            <Router>
+                {/* Header Should be in all pages*/}
+                <Navigation />
+
+                {/* Routes here */}
+                <Routes>
+                    <Route path="/" element={<Navigate to="/home" />} />
+                    {/* Home Route */}
+                    <Route
+                        path="/home"
+                        element={
+                            <>
+                                <Header data={landingPageData.Header} />
+                                <Features data={landingPageData.Features} />
+                            </>
+                        }
+                    />
+
+                    {/* About Route */}
+                    <Route
+                        path="/about"
+                        element={
+                            <>
+                                <About data={landingPageData.About} />
+                                <Team data={landingPageData.Team} />
+                            </>
+                        }
+                    />
+                    <Route path="/demo" element={<DemoMain />} />
+                </Routes>
+            </Router>
+
             <Contact data={landingPageData.Contact} />
         </div>
     );

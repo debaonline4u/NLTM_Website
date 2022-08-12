@@ -1,0 +1,21 @@
+audio {
+    margin: 10px;
+}
+
+.loader {
+    height: 10px;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #5eed65;
+    border: 2px #5eed65 solid;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px;
+}
+.sub-loader {
+    height: 100%;
+    width: 0%;
+    background-color: #2e6d30;
+    border-radius: 20px;
+}
