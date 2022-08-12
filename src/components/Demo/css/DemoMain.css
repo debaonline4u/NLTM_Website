@@ -7,14 +7,14 @@
     flex-direction: column;
 }
 .toggle-sound {
-    background-color: #ec407a;
-    width: 55px;
-    height: 55px;
+    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+    width: 100px;
+    height: 100px;
     text-align: center;
     color: #fff;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 0 0 #f06292;
+    box-shadow: 0 0 0 0 #6372ff;
 }
 .toggle-sound-anim {
     animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
@@ -49,7 +49,7 @@
     align-items: center;
 }
 .sound--icon {
-    font-size: 1.6rem;
+    font-size: 3.6rem;
 }
 .audioplayer {
     /* background-color: #ec407a; */
