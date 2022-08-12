@@ -58,8 +58,8 @@ ol {
 ul,
 ol {
     padding: 0;
-    webkit-padding: 0;
-    moz-padding: 0;
+    --webkit-padding: 0;
+    --moz-padding: 0;
 }
 hr {
     height: 2px;
@@ -208,7 +208,7 @@ a:focus,
     display: table;
     width: 100%;
     padding: 0;
-    background: url("https://nltm-lid.iitmandi.ac.in/Home/690d998f8a76f846b3905c26f33ef4a6.jpg")
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/IIT_Mandi_North_Campus_Bird_eye.jpg/2560px-IIT_Mandi_North_Campus_Bird_eye.jpg")
         center center no-repeat;
     background-color: #e5e5e5;
     -webkit-background-size: cover;
@@ -217,7 +217,7 @@ a:focus,
     -o-background-size: cover;
 }
 .intro .overlay {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.302);
 }
 .intro h1 {
     font-family: "Raleway", sans-serif;
@@ -329,7 +329,7 @@ header .intro-text {
 }
 /* Contact Section */
 #contact {
-    padding: 100px 0 60px;
+    padding: 10px 0 10px;
     background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
     color: rgba(255, 255, 255, 0.75);
 }
@@ -360,66 +360,6 @@ header .intro-text {
     margin-bottom: 25px;
     padding-bottom: 20px;
     font-weight: 400;
-}
-#contact form {
-    padding-top: 20px;
-}
-#contact .text-danger {
-    color: #cc0033;
-    text-align: left;
-}
-#contact .btn-custom {
-    margin: 30px 0;
-    background: transparent;
-    border: 2px solid #fff;
-}
-#contact .btn-custom:hover {
-    color: #1f386e;
-    background: #fff;
-}
-label {
-    font-size: 12px;
-    font-weight: 400;
-    font-family: "Open Sans", sans-serif;
-    float: left;
-}
-#contact .form-control {
-    display: block;
-    width: 100%;
-    padding: 6px 12px;
-    font-size: 16px;
-    line-height: 1.42857143;
-    color: #444;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ddd;
-    border-radius: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    -webkit-transition: none;
-    -o-transition: none;
-    transition: none;
-}
-#contact .form-control:focus {
-    border-color: #999;
-    outline: 0;
-    -webkit-box-shadow: transparent;
-    box-shadow: transparent;
-}
-.form-control::-webkit-input-placeholder {
-    color: #777;
-}
-.form-control:-moz-placeholder {
-    color: #777;
-}
-.form-control::-moz-placeholder {
-    color: #777;
-}
-.form-control:-ms-input-placeholder {
-    color: #777;
-}
-#contact .contact-item {
-    margin: 20px 0;
 }
 #contact .contact-item span {
     color: rgba(255, 255, 255, 1);
@@ -452,21 +392,6 @@ label {
 #contact .social i.fa:hover {
     color: #608dfd;
     background: #fff;
-}
-/* Footer Section*/
-#footer {
-    background: #f6f6f6;
-    padding: 30px 0;
-}
-#footer p {
-    color: #888;
-    font-size: 14px;
-}
-#footer a {
-    color: #608dfd;
-}
-#footer a:hover {
-    border-bottom: 2px solid #608dfd;
 }
 
 @media (max-width: 768px) {

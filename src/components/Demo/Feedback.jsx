@@ -10,50 +10,73 @@ function Feedback(props) {
     if (feedbacksent)
         return (
             <>
-                <h5>Thank You for the Feedback!</h5>
+                <h1 style={{ padding: "30px" }}>Thank You for the Feedback!</h1>
             </>
         );
 
     return (
         <section>
-            <div className="predicted-language">
-                The Predicted Language is:
-                <button
-                    className="btn btn-outline-success m-2"
-                    type="button"
+            <div
+                className="predicted-language"
+                style={{ display: "flex", justifyContent: "center" }}
+            >
+                <h4>The Predicted Language is:&nbsp;&nbsp;&nbsp;</h4>
+                <h2
                     style={{
-                        color: "white",
+                        borderBottom: "3px solid #6372ff",
+                        color: "#6372ff",
                     }}
-                    disabled
                 >
                     {props.predicted_language}
-                </button>
+                </h2>
             </div>
-            <div className="classify">
-                Are you Satisfied with the predicted Language?
-                <button
-                    className="btn btn-success m-2"
-                    onClick={() => {
-                        selected_language = props.predicted_language;
-                        finish();
-                    }}
-                >
-                    Yes
-                </button>
-                <button
-                    className="btn btn-danger m-1"
-                    onClick={() => {
-                        setlanguage_satisfied(false);
-                    }}
-                >
-                    No
-                </button>
+            <div
+                className="classify"
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                }}
+            >
+                <h3>Are you Satisfied with the predicted Language?</h3>
+                <div className="buttons">
+                    <button
+                        className="btn btn-success"
+                        style={{ margin: "10px", padding: "5px 30px" }}
+                        onClick={() => {
+                            selected_language = props.predicted_language;
+                            finish();
+                        }}
+                    >
+                        <h4 style={{ color: "white" }}>Yes</h4>
+                    </button>
+                    <button
+                        className="btn btn-danger"
+                        style={{ margin: "10px", padding: "5px 32px" }}
+                        onClick={() => {
+                            setlanguage_satisfied(false);
+                        }}
+                    >
+                        <h4 style={{ color: "white" }}>No</h4>
+                    </button>
+                </div>
                 <br />
                 {!language_satisfied && (
                     <>
                         Ok, then which language was that among this?
                         <br />
-                        {renderButtons()}
+                        <div
+                            className="language-buttons"
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                flexWrap: "wrap",
+                                alignItems: "center",
+                                maxWidth: "640px",
+                            }}
+                        >
+                            {renderButtons()}
+                        </div>
                     </>
                 )}
             </div>
@@ -79,21 +102,32 @@ function Feedback(props) {
             "Odia",
             "Telugu",
         ];
+        let i = 0;
         return (
             <>
-                {languages.map((ele) => (
-                    <button
-                        key={ele}
-                        className="btn btn-primary m-1"
-                        onClick={() => {
-                            selected_language = ele;
-                            console.log(ele, "selected........");
-                            finish();
-                        }}
-                    >
-                        {ele}
-                    </button>
-                ))}
+                {languages.map((ele) => {
+                    i++;
+                    return (
+                        <>
+                            <button
+                                key={ele}
+                                className="btn btn-primary m-1"
+                                style={{
+                                    margin: "5px",
+                                    width: "150px",
+                                }}
+                                onClick={() => {
+                                    selected_language = ele;
+                                    console.log(ele, "selected........");
+                                    finish();
+                                }}
+                            >
+                                <h4 style={{ color: "white" }}>{ele}</h4>
+                            </button>
+                            {i % 2 == 0 ? <br /> : ""}
+                        </>
+                    );
+                })}
             </>
         );
     }
