@@ -1,6 +1,6 @@
 export const Header = (props) => {
     return (
-        <header id="header">
+        <header id="header" style={{ width: "100%" }}>
             <div className="intro">
                 <div className="overlay">
                     <div className="container">

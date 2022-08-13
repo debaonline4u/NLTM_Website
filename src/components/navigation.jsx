@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Navigation = (props) => {
     let [isvisible, setisvisible] = useState(false);
+    let [sitename, set_sitename] = useState("");
+    function change_site_title_wrt_responsive() {
+        var newWidth = window.innerWidth;
+        if (newWidth > 530) set_sitename("NLTM-LID - IIT Mandi and NIT Goa");
+        else set_sitename("NLTM-LID");
+    }
+    window.addEventListener("resize", (event) => {
+        change_site_title_wrt_responsive();
+    });
+    useEffect(() => {
+        change_site_title_wrt_responsive();
+    }, []);
     return (
         <nav id="menu" className="navbar navbar-default navbar-fixed-top">
             <div className="container">
@@ -21,7 +33,7 @@ export const Navigation = (props) => {
                         <span className="icon-bar"></span>{" "}
                     </button>
                     <a className="navbar-brand page-scroll" href="#page-top">
-                        NLTM
+                        {sitename}
                     </a>{" "}
                 </div>
 

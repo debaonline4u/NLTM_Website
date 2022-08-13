@@ -29,7 +29,14 @@ const App = () => {
     }, []);
 
     return (
-        <div>
+        <div
+            style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+            }}
+        >
             <Router>
                 {/* Header Should be in all pages*/}
                 <Navigation />

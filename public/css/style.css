@@ -267,6 +267,9 @@ header .intro-text {
     background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
 }
+#features {
+    padding: 50px;
+}
 /* About Section */
 #about {
     padding: 100px 0;
@@ -335,7 +338,7 @@ header .intro-text {
 }
 /* Contact Section */
 #contact {
-    padding: 10px 0 10px;
+    padding: 0 0 50px 0;
     background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
     color: rgba(255, 255, 255, 0.75);
 }
@@ -375,31 +378,10 @@ header .intro-text {
 #contact .contact-item i.fa {
     margin-right: 10px;
 }
-#contact .social {
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 50px;
-    margin-top: 50px;
-    text-align: center;
+#contact a {
+    text-decoration: none;
+    color: white;
 }
-#contact .social ul li {
-    display: inline-block;
-    margin: 0 20px;
-}
-#contact .social i.fa {
-    font-size: 22px;
-    width: 48px;
-    height: 48px;
-    padding: 12px 0;
-    border: 2px solid #fff;
-    color: #fff;
-    border-radius: 50%;
-    transition: all 0.3s;
-}
-#contact .social i.fa:hover {
-    color: #608dfd;
-    background: #fff;
-}
-
 @media (max-width: 768px) {
     #about img {
         margin: 50px 0;
