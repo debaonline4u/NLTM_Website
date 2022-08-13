@@ -27,7 +27,21 @@ function Feedback(props) {
                         <h2>{props.predicted_language}</h2>
                     </div>
                 </div>
-                <h1 style={{ padding: "30px" }}>Thank You for the Feedback!</h1>
+                <h1
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        padding: "30px",
+                    }}
+                >
+                    <div className="img" style={{ maxWidth: "700px" }}>
+                        <img
+                            src="https://jayeshkawli.ghost.io/content/images/2016/04/Screen-Shot-2016-04-03-at-10-40-15-PM.png"
+                            alt=""
+                            style={{ width: "100%" }}
+                        />
+                    </div>
+                </h1>
             </div>
         );
 

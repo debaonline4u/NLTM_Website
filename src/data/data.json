@@ -5,39 +5,67 @@
     },
     "About": {
         "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "Why": [
-            "Lorem ipsum dolor",
-            "Tempor incididunt",
-            "Lorem ipsum dolor",
-            "Incididunt ut labore"
+        "lang1": ["Assamese", "Bengali", "Gujrati", "Hindi"],
+        "lang2": ["Kannada", "Malayalam", "Odia", "Telugu"]
+    },
+    "Demo": {
+        "description": "This is a Deep Neural Network (DNN) based Language Identification system designed to identify 8 Indian languages. This model can identify Assamase, Bengali, Gujrati, Hindi, Kannada, Malayalam, Odia and Telugu. Some details about these languages can be found here. Here, we use a bidirectional long short-term memory (BLSTM) based DNN model. In this system, the input speech is first converted into a sequence of bottelneck features (BNFs). The BLSTM layers in the DNN then analyse this sequence of BNFs by dividing it into fixed-length chunks (each chunk ~600 ms) to produce LID-seq-senones. Each LID-seq-senone is a compact representation of the given fixed-lingth chunk. These LID-seq-senones are then processed by a self-attention block, which assigns a weightage to each of these LID-seq-senones based on their relevance to the LID task. Using these attention values, weighted average of these LID-seq-senones are then computed to obtain an utterance-level representation of the speech (called u-vector). This u-vector is then processed by the output layer to identify the language. ",
+        "papers": [
+            "https://cloud.iitmandi.ac.in/f/996e2e07624646619b66/?dl=1",
+            "https://cloud.iitmandi.ac.in/f/ddf6d703924d483e95af/?dl=1"
         ],
-        "Why2": [
-            "Aliquip ex ea commodo",
-            "Lorem ipsum dolor",
-            "Exercitation ullamco",
-            "Lorem ipsum dolor"
-        ]
+        "info": "This page demonstrates, the classification of an input audio file in any of 8 Indian languages. "
     },
     "Team": [
         {
-            "img": "img/team/01.jpg",
-            "name": "John Doe",
-            "job": "Director"
+            "title": "Principal Investigator (PI)",
+            "people": [
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/22ccdea11091fa0cf8438881150172ee.jpg",
+                    "name": "Dr. Dileep A.D.",
+                    "job": "Associate Professor, School of Computing and Electrical Engineering (SCEE), IIT Mandi"
+                },
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/87b74a9157ec10e23393374f95686557.jpg",
+                    "name": "Dr. Veena Thenkanidiyoor",
+                    "job": "Associate Professor, Department of Computer Science and Engineering, NIT Goa"
+                }
+            ]
         },
         {
-            "img": "img/team/02.jpg",
-            "name": "Mike Doe",
-            "job": "Senior Designer"
+            "title": "Co-Principal Investigator (Co-PI)",
+            "people": [
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/7ffa63895177462a36db03abd09aad55.jpg",
+                    "name": "Co-Principal Investigator (Co-PI)",
+                    "job": "Associate Professor, School of Computing and Electrical Engineering (SCEE), IIT Mandi"
+                }
+            ]
         },
         {
-            "img": "img/team/03.jpg",
-            "name": "Jane Doe",
-            "job": "Senior Designer"
-        },
-        {
-            "img": "img/team/04.jpg",
-            "name": "Karen Doe",
-            "job": "Project Manager"
+            "title": "Project Staff",
+            "people": [
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/0f335aa2973959c4390cb5c7c4e9347a.jpg",
+                    "name": "Muralikrishna",
+                    "job": "PhD Scholar, SCEE, IIT Mandi"
+                },
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/994774aaedfcdd4cc94a9f2d6d4855b0.jpg",
+                    "name": "Sujeet Kumar",
+                    "job": "PhD Scholar, SCEE, IIT Mandi"
+                },
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/60b0f35b4c1744af84a6cb6b303f4b81.jpg",
+                    "name": "Debashis Sahoo",
+                    "job": "MS Scholar, SCEE, IIT Mandi"
+                },
+                {
+                    "img": "https://nltm-lid.iitmandi.ac.in/People/Samarth.jpg",
+                    "name": "Samarth M.",
+                    "job": "M Tech Student, CSP, SCEE, IIT Mandi"
+                }
+            ]
         }
     ],
     "Contact": {

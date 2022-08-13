@@ -7,7 +7,7 @@ var MediaStreamRecorder = require("msr");
 let mediaRecorder;
 let blobURL;
 
-function Mic() {
+function DemoMain(props) {
     let [micstatus, setmicstatus] = useState(false);
     let [disable_mic, set_disable_mic] = useState(false);
     let [show_send_wrapper, set_show_send_wrapper] = useState(false);
@@ -47,7 +47,55 @@ function Mic() {
     }
 
     return (
-        <section className="mic">
+        <section
+            className="mic"
+            style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "11pt",
+                maxWidth: "1200px",
+                padding: "50px",
+            }}
+        >
+            <div className="container">
+                <div
+                    className="col-md-10 col-md-offset-1 section-title text-center"
+                    style={{ marginBottom: "0px" }}
+                >
+                    <h2>
+                        Spoken Language <br /> Identify
+                    </h2>
+                </div>
+            </div>
+
+            <div className="text text-left">
+                <p>{props.data && props.data.description}</p>
+            </div>
+            <div className="text text-center">
+                <h5>
+                    More details about this system can be found in these papers.
+                </h5>
+                <ul className="list-group">
+                    {props.data &&
+                        props.data.papers.map((ele) => (
+                            <li key={ele} className="list-group-item">
+                                &nbsp;&nbsp;&nbsp;
+                                <a href={ele}>{ele}</a>
+                            </li>
+                        ))}
+                </ul>
+            </div>
+            <div className="container">
+                <div
+                    className="col-md-10 col-md-offset-1 section-title text-center"
+                    style={{ marginBottom: "0px" }}
+                >
+                    <h2>DEMO</h2>
+                </div>
+            </div>
+            <p>{props.data && props.data.info}</p>
             <div className="container-2">
                 <div
                     className={
@@ -119,4 +167,4 @@ function Mic() {
     );
 }
 
-export default Mic;
+export default DemoMain;

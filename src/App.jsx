@@ -65,7 +65,10 @@ const App = () => {
                             </>
                         }
                     />
-                    <Route path="/demo" element={<DemoMain />} />
+                    <Route
+                        path="/demo"
+                        element={<DemoMain data={landingPageData.Demo} />}
+                    />
                 </Routes>
             </Router>
 
