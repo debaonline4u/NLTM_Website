@@ -102,11 +102,14 @@ function Mic() {
                         set_show_send_wrapper={set_show_send_wrapper}
                         set_disable_mic={set_disable_mic}
                     />
+
                     {showFeedback ? (
-                        <Feedback
-                            predicted_language={predicted_language}
-                            audioFileName={audioFileName}
-                        />
+                        <>
+                            <Feedback
+                                predicted_language={predicted_language}
+                                audioFileName={audioFileName}
+                            />
+                        </>
                     ) : (
                         ""
                     )}

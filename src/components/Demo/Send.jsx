@@ -71,7 +71,7 @@ function Send(props) {
                     disabled={STATUS !== UPLOAD_STATUS.STOPPED}
                 >
                     <h4 style={{ color: "white" }}>
-                        Cancel&nbsp; <i className="fa-solid fa-ban"></i>
+                        Clear&nbsp; <i className="fa-solid fa-ban"></i>
                     </h4>
                 </button>
             </div>
