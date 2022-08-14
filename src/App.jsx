@@ -8,13 +8,7 @@ import { Contact } from "./components/contact";
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import DemoMain from "./components/Demo/DemoMain";
-import ReactDOM from "react-dom/client";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
@@ -43,17 +37,18 @@ const App = () => {
 
                 {/* Routes here */}
                 <Routes>
-                    <Route path="/" element={<Navigate to="/home" />} />
                     {/* Home Route */}
-                    <Route
-                        path="/home"
-                        element={
-                            <>
-                                <Header data={landingPageData.Header} />
-                                <Features data={landingPageData.Features} />
-                            </>
-                        }
-                    />
+                    {["/", "/home"].map((route) => (
+                        <Route
+                            path={route}
+                            element={
+                                <>
+                                    <Header data={landingPageData.Header} />
+                                    <Features data={landingPageData.Features} />
+                                </>
+                            }
+                        />
+                    ))}
 
                     {/* About Route */}
                     <Route
