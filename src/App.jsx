@@ -38,7 +38,7 @@ const App = () => {
                 {/* Routes here */}
                 <Routes>
                     {/* Home Route */}
-                    {["/", "/home"].map((route) => (
+                    {["/", "/home", "/NLTM_Website/"].map((route) => (
                         <Route
                             path={route}
                             element={
