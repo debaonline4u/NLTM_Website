@@ -172,8 +172,8 @@ function Feedback(props) {
             audiofilename: props.audioFileName,
             actual_lang: selected_language,
         };
-        let GLOBAL_URL = process.env.REACT_APP_GLOBAL_URL;
-        let POST_URL = GLOBAL_URL + "/feedbackupdate/";
+        let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
+        let POST_URL = BACKEND_HOME_URL + "/feedbackupdate/";
         axios
             .post(POST_URL, payload)
             .then((res) => {

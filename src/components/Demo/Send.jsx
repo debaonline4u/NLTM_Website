@@ -118,8 +118,8 @@ function Send(props) {
             },
         };
 
-        let GLOBAL_URL = process.env.REACT_APP_GLOBAL_URL;
-        let POST_URL = GLOBAL_URL + "/audiorecv";
+        let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
+        let POST_URL = BACKEND_HOME_URL + "/audiorecv";
 
         axios
             .post(POST_URL, payload, options)
