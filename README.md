@@ -13,7 +13,9 @@
 
 ## 🤔TODO
 
--
+- edit readme file
+- change the about text
+- add predefined audio support
 
 <!-- ABOUT THE PROJECT -->
 
@@ -52,7 +54,7 @@ You can just visit the [NLTM-Website](https://debaonline4u.github.io/NLTM_Websit
 
 ### Prerequisites
 
-There is no such complicated prerequisites for using this app except for `using modern browsers`. But if you are using it locally you will need `python3` and you will have to install some python packages.
+There is no such complicated prerequisites for using this app except for `using modern browsers`. But if you are using it locally you will need `python3` and `nodejs>=16.0` and you will have to install some packages.
 
 ### ⚙Installation
 
@@ -66,44 +68,79 @@ If you want to get a local copy of this app.
     ```sh
     cd NLTM_Website
     ```
-3. Run the server file 
+3. To host the Backend, we need to install some packages via `pip`. Hence, run the following command. (Note: use `Python 3` only)
 
     ```sh
-    # For serving the localhost
-    python server.py  # for Windows
-    python3 server.py   # for Linux and Mac
-
-    # For serving and opening the file in the browser provided (by default firefox)
-    python server.py --open=firefox  # for Windows
-    python3 server.py --open=firefox  # for Linux and Mac
+    # Installing backend dependencies
+    pip install numpy pandas torch librosa ipython sklearn flask flask_cors
     ```
+    and then run the following command to start the backend
+    ```sh
+    # To go into the Backend Folder
+    cd Backend/
+    # Run the server
+    python app.py
+    ```
+4. To host the Frontend, there are two steps: First `to build the frontend using the url of backend` and then `to serve it using serve package`.<br/>
+   We need to install some packages via `npm`. Hence, run the following command in new terminal. (Note: use `node>=16.0` only)
 
+    ```sh
+    # Go to the Project directory where package.json is located
+    cd <project-dir>
+    
+    # run the following command to install the packages
+    npm install
+    ```
+    <details>
+    <summary> <span style="color:red">Note: You can skip this step if you do not need to modify the backend URL</span></summary>
+     <br />
+      Find the `.env.local` file and open it in any text editor and replace the line like this:
+
+      ```
+      REACT_APP_BACKEND_HOME_URL="paste your url here which you copied in step 3, without quotes"
+
+      # For example -> REACT_APP_BACKEND_HOME_URL=http://localhost:5000
+      ```
+
+
+      after you have update the link, we need to build the Frontend. Hence, run the following command in terminal.
+
+
+
+      ```sh
+      # Go to the Project directory where package.json is located
+      cd <project-dir>
+
+      # command to build the frontend
+      npm run build
+      ```
+      this will populate the `docs\` folder with the new build files, making it ready to serve. 
+
+    </details>
+    
+5.  Serve with the following command.
+     ```sh
+    # serve the pages on port 3000(default)
+    npx serve -s docs
+    
+    # run this, if you want to run it on different port instead
+    # the port can be adjusted using the -l or --listen flag
+    serve -s build -l <your-port-number-here>
+    ```
+    for more details on `serve` package [see this page](https://create-react-app.dev/docs/deployment/).
+    <br />
+6. The site is hosted now on specified port.
+    
 <p align="right">(<a href="#top">⬆️</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## 🤝Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this app better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">⬆️</a>)</p>
-
 
 <!-- CONTACT -->
 
 ## Contact
 
-Twitter - todo <br>
-LinkedIn - todo <br>
+Twitter - todo 
+<br>
+LinkedIn - todo
+<br>
 Project Link: todo
 
 <p align="right">(<a href="#top">⬆️</a>)</p>
@@ -112,6 +149,6 @@ Project Link: todo
 
 ## Acknowledgments
 
--   Thanks todo
+-   TODO
 
 <p align="right">(<a href="#top">⬆️</a>)</p>
