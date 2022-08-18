@@ -23,7 +23,11 @@
 
 ![Screenshot](https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/img/screenshot-home.jpg)
 <br /> <br />
-This is a Deep Neural Network (DNN) based Language Identification system designed to identify 8 Indian languages. This model can identify Assamase, Bengali, Gujrati, Hindi, Kannada, Malayalam, Odia and Telugu. Some details about these languages can be found here. Here, we use a bidirectional long short-term memory (BLSTM) based DNN model. In this system, the input speech is first converted into a sequence of bottelneck features (BNFs). The BLSTM layers in the DNN then analyse this sequence of BNFs by dividing it into fixed-length chunks (each chunk ~600 ms) to produce LID-seq-senones. Each LID-seq-senone is a compact representation of the given fixed-lingth chunk. These LID-seq-senones are then processed by a self-attention block, which assigns a weightage to each of these LID-seq-senones based on their relevance to the LID task. Using these attention values, weighted average of these LID-seq-senones are then computed to obtain an utterance-level representation of the speech (called u-vector). This u-vector is then processed by the output layer to identify the language.
+This is a Deep Neural Network (DNN) based Language Identification system designed to identify 8 Indian languages. This model can identify  `Assamase`, `Bengali`, `Gujrati`, `Hindi`, `Kannada`, `Malayalam`, `Odia` and `Telugu`. <br/>
+
+Here, we use a bidirectional long short-term memory (BLSTM) based DNN model. In this system, the input speech is first converted into a sequence of bottelneck features (BNFs). The BLSTM layers in the DNN then analyse this sequence of BNFs by dividing it into fixed-length chunks (each chunk ~600 ms) to produce LID-seq-senones. <br/>
+
+Each LID-seq-senone is a compact representation of the given fixed-lingth chunk. These LID-seq-senones are then processed by a self-attention block, which assigns a weightage to each of these LID-seq-senones based on their relevance to the LID task. Using these attention values, weighted average of these LID-seq-senones are then computed to obtain an utterance-level representation of the speech (called u-vector). This u-vector is then processed by the output layer to identify the language.
 
 <p align="right">(<a href="#top">⬆️</a>)</p>
 
