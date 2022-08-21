@@ -13,7 +13,7 @@
 
 ## 🤔TODO
 
-- edit readme file
+- ~~edit readme file~~
 - change the about text
 - add predefined audio support
 
