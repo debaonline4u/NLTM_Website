@@ -54,8 +54,7 @@ e_dim = 64*2
 
 look_back = 30
 
-###############################################
-
+######################## ML functions for new features / Recorded Audio ######################
 
 def lstm_data(f):
 
@@ -70,22 +69,11 @@ def lstm_data(f):
     np.place(std, std == 0, 1)
     X = (X - mu) / std
 
-    # f1 = os.path.splitext(f)[0]
-    # print(f1)
-    # lang = f1[42:45]
-    # lab2id = {'asm':0, 'ben':1, 'guj':2, 'hin':3, 'kan':4, 'mal':5, 'odi':6, 'tel':7}
-    # lab2lang = {'asm':"Assamese", 'ben':"Bengali", 'guj':"Gujrati", 'hin':"Hindi", 'kan':"Kannada", 'mal':"Malayalam", 'odi':"Odia", 'tel':"Telugu"}
-    # Y1 = np.array(lab2id[lang])
-    # Lng = lab2lang[lang]
-
     for i in range(0, len(X)-look_back, 1):  # High resolution low context
         a = X[i:(i+look_back), :]
         Xdata1.append(a)
     Xdata1 = np.array(Xdata1)
     Xdata1 = torch.from_numpy(Xdata1).float()
-
-    # return Xdata1, Y1, Lng
-    # Y1 and Lng Set to 1 and 1 as the new website will be predicting on real time voice inputs
 
     return Xdata1, 1, 1
 
@@ -145,6 +133,65 @@ def classify(file_path):
     P = np.array([P.numpy()])[0]
     print({'actual': True_Lng, 'predicted': id2lang[P]})
     return {'actual': True_Lng, 'predicted': id2lang[P]}
+
+############################################################
+
+
+############ ML functions for Original Features ################
+
+###############################################
+def og_lstm_data(f):
+    f1 = os.path.splitext(f)[0]
+    lang = f1[0:3]
+    df = pd.read_csv("./sample_audio_files/sample_BNF/"+f1 +
+                     ".csv", encoding='utf-16', usecols=list(range(0, IP_dim)))
+    dt = df.astype(np.float32)
+    X = np.array(dt)
+
+    Xdata1 = []
+
+    mu = X.mean(axis=0)
+    std = X.std(axis=0)
+    np.place(std, std == 0, 1)
+    X = (X - mu) / std
+#    f1 = os.path.splitext(f)[0]
+#    print(f1)
+#    lang = f1[42:45]
+
+    lab2id = {'asm': 0, 'ben': 1, 'guj': 2, 'hin': 3,
+              'kan': 4, 'mal': 5, 'odi': 6, 'tel': 7}
+    lab2lang = {'asm': "Assamese", 'ben': "Bengali", 'guj': "Gujrati", 'hin': "Hindi",
+                'kan': "Kannada", 'mal': "Malayalam", 'odi': "Odia", 'tel': "Telugu"}
+
+    Y1 = np.array(lab2id[lang])
+    Lng = lab2lang[lang]
+
+    for i in range(0, len(X)-look_back, 1):  # High resolution low context
+        a = X[i:(i+look_back), :]
+        Xdata1.append(a)
+    Xdata1 = np.array(Xdata1)
+    Xdata1 = torch.from_numpy(Xdata1).float()
+    return Xdata1, Y1, Lng
+
+
+def og_classify(file_path):
+    id2lang = {0: "Assamese", 1: "Bengali", 2: "Gujrati", 3: "Hindi",
+               4: "Kannada", 5: "Malayalam", 6: "Odia", 7: "Telugu"}
+    model = LSTMNet()
+    model_path = "./model/base1_e3.pth"
+    model.load_state_dict(torch.load(model_path, map_location='cpu'))
+
+    X1, Y, True_Lng = og_lstm_data(file_path)
+    X1 = np.swapaxes(X1, 0, 1)
+    X1 = Variable(X1, requires_grad=True)
+
+    output = model.forward(X1)
+    P = output.argmax()
+    P = np.array([P.numpy()])[0]
+    print({'actual': True_Lng, 'predicted': id2lang[P]})
+    return {'actual': True_Lng, 'predicted': id2lang[P]}
+
+######################################################################
 
 
 # function to save the predictio results
@@ -234,5 +281,16 @@ def upload_audio_file():
     return jsonify({"status": "NOT ACCEPTABLE", "msg": "POST EXPECTED"})
 
 
+# route for the original functionality of the web site
+@app.route('/ogdemo', methods=['POST'])
+def demo():
+    if request.method == 'POST':
+        file_name_payload = request.get_json()
+        file_name = file_name_payload["audiofilename"]
+        output = og_classify(file_name)
+        return jsonify(output)
+    return jsonify({"status":"404", "msg":"ERROR : Audio Files Not Found, POST method expected"})
+
 if __name__ == '__main__':
     app.run(debug=True)
+
