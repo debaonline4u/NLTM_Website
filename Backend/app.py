@@ -17,7 +17,7 @@ from torch.autograd import Variable
 from torch.autograd import Function
 from torch import optim
 import sklearn.metrics
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request, redirect, send_file
 from flask_cors import CORS, cross_origin
 
 
@@ -55,6 +55,7 @@ e_dim = 64*2
 look_back = 30
 
 ######################## ML functions for new features / Recorded Audio ######################
+
 
 def lstm_data(f):
 
@@ -289,8 +290,20 @@ def demo():
         file_name = file_name_payload["audiofilename"]
         output = og_classify(file_name)
         return jsonify(output)
-    return jsonify({"status":"404", "msg":"ERROR : Audio Files Not Found, POST method expected"})
+    return jsonify({"status": "404", "msg": "ERROR : Audio Files Not Found, POST method expected"})
+
+
+# route for getting the audio file from backend to the front-end
+@app.route('/ogdemo-getfile', methods=['POST'])
+def demoGetFile():
+    if request.method == 'POST':
+        file_name_payload = request.get_json()
+        file_name = file_name_payload["audiofilename"]
+        f1 = os.path.splitext(file_name)[0]
+        lang = f1[0:3]
+        return send_file("./sample_audio_files/sample_wav/"+lang+"/"+f1 + ".wav", mimetype="audio/wav", as_attachment=True, attachment_filename=f1)
+    return jsonify({"status": "404", "msg": "ERROR : Audio Files Not Found, POST method expected"})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
