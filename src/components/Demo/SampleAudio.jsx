@@ -4,6 +4,7 @@ import axios from "axios";
 function SampleAudio(props) {
     let [previouslySelectedLanguage, setpreviouslySelectedLanguage] =
         useState("none");
+    let [audioURL, setaudioURL] = useState("");
     let [selectedValue, setselectedValue] = useState("none");
     let [actualLanguage, setactualLanguage] = useState("Not selected yet");
     let [predictedLanguage, setpredictedLanguage] = useState("Loading");
@@ -19,14 +20,9 @@ function SampleAudio(props) {
         setpreviouslySelectedLanguage(selectedValue);
         console.log("clicked");
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
-        let POST_URL = BACKEND_HOME_URL + "/ogdemo";
-        let payload = {
-            audiofilename: selectedValue,
-        };
-        axios.post(POST_URL, payload).then((res) => {
-            setpredictedLanguage(res.data.predicted);
-            console.log(res);
-        });
+        let POST_URL = BACKEND_HOME_URL + "/ogdemo-getfile";
+        let audiohandler = document.getElementById("halwa");
+        audiohandler.src = POST_URL + "/" + selectedValue;
     }
 
     useEffect(() => {
@@ -40,6 +36,7 @@ function SampleAudio(props) {
     }, [selectedValue]);
     return (
         <section className="sample-audio">
+            <audio id="halwa" src={audioURL} controls type="audio/wav"></audio>
             <div
                 className="send-from-sample-files"
                 style={{

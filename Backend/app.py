@@ -301,7 +301,7 @@ def demoGetFile():
         file_name = file_name_payload["audiofilename"]
         f1 = os.path.splitext(file_name)[0]
         lang = f1[0:3]
-        return send_file("./sample_audio_files/sample_wav/"+lang+"/"+f1 + ".wav", mimetype="audio/wav", as_attachment=True, attachment_filename=f1)
+        return send_file("./sample_audio_files/sample_wav/"+lang+"/"+f1 + ".wav", mimetype="audio/wav", as_attachment=True, download_name=f1)
     return jsonify({"status": "404", "msg": "ERROR : Audio Files Not Found, POST method expected"})
 
 
