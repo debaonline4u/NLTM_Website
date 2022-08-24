@@ -33,7 +33,7 @@ const App = () => {
         >
             <Router>
                 {/* Header Should be in all pages*/}
-                {/* <Navigation /> */}
+                <Navigation />
 
                 {/* Routes here */}
                 <Routes>

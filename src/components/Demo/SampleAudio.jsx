@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 function SampleAudio(props) {
     let [previouslySelectedLanguage, setpreviouslySelectedLanguage] =
         useState("none");
-    let [audioURL, setaudioURL] = useState("");
     let [selectedValue, setselectedValue] = useState("none");
     let [actualLanguage, setactualLanguage] = useState("Not selected yet");
     let [predictedLanguage, setpredictedLanguage] = useState("Loading");
     let [showFeedback, setshowFeedback] = useState(false);
+    let [showAudioElement, setshowAudioElement] = useState(false);
 
     function handleOnChange(evt) {
         setselectedValue(evt.target.value);
@@ -18,11 +18,23 @@ function SampleAudio(props) {
         setpredictedLanguage("Loading");
         setshowFeedback(true);
         setpreviouslySelectedLanguage(selectedValue);
-        console.log("clicked");
+        let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
+        let POST_URL = BACKEND_HOME_URL + "/ogdemo";
+        let payload = {
+            audiofilename: selectedValue,
+        };
+        axios.post(POST_URL, payload).then((res) => {
+            console.log(res);
+            setpredictedLanguage(res.data.predicted);
+        });
+    }
+
+    function hangleAudioFetch() {
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/ogdemo-getfile";
         let audiohandler = document.getElementById("halwa");
         audiohandler.src = POST_URL + "/" + selectedValue;
+        setshowAudioElement(true);
     }
 
     useEffect(() => {
@@ -33,10 +45,12 @@ function SampleAudio(props) {
         else setactualLanguage(language);
         console.log(code, language);
         setpredictedLanguage("Submit to view prediction");
+
+        setshowFeedback(false);
+        setshowAudioElement(false);
     }, [selectedValue]);
     return (
         <section className="sample-audio">
-            <audio id="halwa" src={audioURL} controls type="audio/wav"></audio>
             <div
                 className="send-from-sample-files"
                 style={{
@@ -66,11 +80,23 @@ function SampleAudio(props) {
                         ))}
                 </select>
                 <button
+                    className="btn btn-success"
+                    style={{
+                        fontSize: "large",
+                        padding: "5px 20px",
+                        margin: "5px 5px",
+                    }}
+                    onClick={hangleAudioFetch}
+                    disabled={selectedValue === "none"}
+                >
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </button>
+                <button
                     className="btn btn-primary"
                     style={{
                         fontSize: "large",
                         padding: "5px 20px",
-                        margin: "5px 10px",
+                        margin: "5px 5px",
                     }}
                     onClick={handleSend}
                     disabled={
@@ -80,6 +106,16 @@ function SampleAudio(props) {
                 >
                     <i className="fa-solid fa-paper-plane"></i>
                 </button>
+            </div>
+            <div
+                className="audio-wrapper"
+                style={{
+                    width: "100%",
+                    display: showAudioElement ? "flex" : "none",
+                    justifyContent: "center",
+                }}
+            >
+                <audio id="halwa" src="" controls type="audio/wav"></audio>
             </div>
             <div
                 className="actual"
