@@ -80,6 +80,7 @@ function DemoMain(props) {
                     details about these languages can be found{" "}
                     <a
                         target="_blank"
+                        rel="noreferrer"
                         href="https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers_in_India"
                     >
                         here
