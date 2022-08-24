@@ -26,6 +26,21 @@
         "1661368046615.wav": {
             "predicted_lang": "Gujrati",
             "actual_lang": "Gujrati"
+        },
+        "1661368545947.wav": {
+            "predicted_lang": "Odia",
+            "actual_lang": "Odia"
+        },
+        "1661368720910.wav": {
+            "predicted_lang": "Assamese",
+            "actual_lang": "Assamese"
+        },
+        "1661369091465.wav": {
+            "predicted_lang": "Telugu"
+        },
+        "1661369514902.wav": {
+            "predicted_lang": "Gujrati",
+            "actual_lang": "Bengali"
         }
     }
 }

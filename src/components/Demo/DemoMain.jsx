@@ -188,6 +188,7 @@ function DemoMain(props) {
                             <Feedback
                                 predicted_language={predicted_language}
                                 audioFileName={audioFileName}
+                                data={props.data}
                             />
                         </>
                     ) : (

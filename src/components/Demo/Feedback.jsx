@@ -35,11 +35,10 @@ function Feedback(props) {
                     }}
                 >
                     <div className="img" style={{ maxWidth: "700px" }}>
-                        <img
-                            src="https://jayeshkawli.ghost.io/content/images/2016/04/Screen-Shot-2016-04-03-at-10-40-15-PM.png"
-                            alt=""
-                            style={{ width: "100%" }}
-                        />
+                        <h1 style={{ fontSize: "70px", color: "green" }}>
+                            <i class="fa-solid fa-circle-check"></i>
+                        </h1>
+                        Thank You for Submitting Your Feedback
                     </div>
                 </h1>
             </div>
@@ -110,7 +109,7 @@ function Feedback(props) {
                                     maxWidth: "640px",
                                 }}
                             >
-                                {renderButtons()}
+                                {renderButtons(props)}
                             </div>
                         </>
                     )}
@@ -127,17 +126,14 @@ function Feedback(props) {
         }, 1000);
     }
 
-    function renderButtons() {
-        const languages = [
-            "Assamese",
-            "Bengali",
-            "Gujrati",
-            "Hindi",
-            "Kannada",
-            "Malayalam",
-            "Odia",
-            "Telugu",
-        ];
+    function renderButtons(props) {
+        const languagesDict = props.data.lab2lang;
+        let languages = [];
+        for (var key in languagesDict) {
+            if (languagesDict.hasOwnProperty(key)) {
+                languages.push(languagesDict[key]);
+            }
+        }
         let i = 0;
         return (
             <>
