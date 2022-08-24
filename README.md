@@ -15,7 +15,7 @@
 
 - ~~edit readme file~~
 - change the about text
-- add predefined audio support
+- ~~add predefined audio support~~
 
 <!-- ABOUT THE PROJECT -->
 
