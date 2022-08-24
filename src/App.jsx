@@ -40,6 +40,7 @@ const App = () => {
                     {/* Home Route */}
                     {["/", "/home", "/NLTM_Website/"].map((route) => (
                         <Route
+                            key={route}
                             path={route}
                             element={
                                 <>

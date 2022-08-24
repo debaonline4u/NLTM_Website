@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/DemoMain.css";
 import Feedback from "./Feedback";
+import SampleAudio from "./SampleAudio";
 import Send from "./Send";
 var MediaStreamRecorder = require("msr");
 
@@ -107,10 +108,10 @@ function DemoMain(props) {
                 <ul className="list-group">
                     {props.data &&
                         props.data.papers.map((ele) => (
-                            <li key={ele} className="list-group-item">
+                            <li key={ele.name} className="list-group-item">
                                 &nbsp;&nbsp;&nbsp;
                                 <a href={ele.url}>
-                                    <i class="fa-solid fa-file-lines"></i>
+                                    <i className="fa-solid fa-file-lines"></i>
                                     &nbsp;&nbsp;
                                     {ele.name}
                                 </a>
@@ -194,6 +195,8 @@ function DemoMain(props) {
                     )}
                 </div>
             )}
+            <span>(or)</span>
+            <SampleAudio data={props.data} />
         </section>
     );
 }

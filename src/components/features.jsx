@@ -38,13 +38,11 @@ export const Features = (props) => {
                             ))}
                         </ul>
                         {props.data.para4.map((ele) => (
-                            <>
-                                <h3 key={ele}>
-                                    <i className="fa-solid fa-hand-point-right"></i>
-                                    &nbsp;&nbsp;&nbsp; {ele.title}
-                                </h3>
+                            <span key={ele.title}>
+                                <h3>{ele.title}</h3>
+
                                 <p>{ele.body}</p>
-                            </>
+                            </span>
                         ))}
                         <div className="container">
                             <div
