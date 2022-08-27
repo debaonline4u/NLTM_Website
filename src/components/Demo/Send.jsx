@@ -12,6 +12,10 @@ function Send(props) {
     let [loaderPercent, setloaderPercent] = useState(0);
     let [uploadText, setuploadText] = useState("");
     let [send_button_disabled, set_send_button_disabled] = useState(false);
+
+    /*
+     * This function tracks the upload status of the file
+     */
     useEffect(() => {
         console.log("Status changed...");
         switch (STATUS) {
@@ -28,6 +32,7 @@ function Send(props) {
                 break;
         }
     }, [STATUS]);
+
     return (
         <section className="audioplayer">
             <span>Your Audio:</span>
@@ -64,7 +69,7 @@ function Send(props) {
                 </button>
                 <button
                     onClick={() => {
-                        cancel();
+                        clear();
                     }}
                     className="btn btn-danger"
                     style={{ margin: "10px" }}
@@ -78,7 +83,11 @@ function Send(props) {
         </section>
     );
 
-    function cancel() {
+    /*
+     * This function resets the mic status and gets ready for
+     * the new data to be recorded
+     */
+    function clear() {
         document.getElementById("player").src = null;
         setSTATUS(UPLOAD_STATUS.STOPPED);
         set_send_button_disabled(false);
@@ -90,21 +99,32 @@ function Send(props) {
     async function send_data() {
         let blobURL = document.getElementById("player").src;
 
+        // get the audio blob
         let BLOB = await fetch(blobURL).then((r) => r.blob());
+        // make a formdata so that we can send this accross the network
         const payload = new FormData();
+
+        // get current date so that we can name this audio file according to the user time
         let currtime = new Date();
         let name = currtime.getTime();
         name = name + ".wav";
         props.setAudioFileName(name);
+
+        // finally append this to the formdata
         payload.append("audio", BLOB, name);
 
+        // defining some upload options (this will help to determine the upload status of the audio file)
         const options = {
             onUploadProgress: (progressEvent) => {
                 const { loaded, total } = progressEvent;
                 setloaderPercent(Math.floor((loaded * 100) / total));
+
+                // logging the upload status to the console
                 console.log(
                     loaded + "kb of " + total + "kb | " + loaderPercent
                 );
+
+                // if got uploaded successfully then
                 if (loaded === total) {
                     setSTATUS(UPLOAD_STATUS.UPLOADED);
 
@@ -118,9 +138,11 @@ function Send(props) {
             },
         };
 
+        // retrieving the backend URL from the .env.local file and using appropriate end point for posting data
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/audiorecv";
 
+        // finally post the data to the backend using axios 🚀
         axios
             .post(POST_URL, payload, options)
             .then((res) => {

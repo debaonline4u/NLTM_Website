@@ -61,6 +61,7 @@ const App = () => {
                             </>
                         }
                     />
+                    {/* Demo Route */}
                     <Route
                         path="/demo"
                         element={<DemoMain data={landingPageData.Demo} />}
@@ -68,6 +69,7 @@ const App = () => {
                 </Routes>
             </Router>
 
+            {/* Footer */}
             <Contact data={landingPageData.Contact} />
         </div>
     );

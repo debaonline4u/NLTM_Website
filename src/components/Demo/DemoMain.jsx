@@ -16,11 +16,13 @@ function DemoMain(props) {
     let [audioFileName, setAudioFileName] = useState("");
     let [showFeedback, setshowFeedback] = useState(false);
     let auto_close_handler;
-
+    let [retry, setretry] = useState(0);
     useEffect(() => {
+        // Get the micrphone access
         let mediaConstraints = {
             audio: true,
         };
+
         navigator.getUserMedia(
             mediaConstraints,
             (stream) => {
@@ -33,11 +35,19 @@ function DemoMain(props) {
                 };
             },
             (e) => {
+                alert("We need the microphone access, for showing the Demo");
                 console.error("media error", e);
             }
         );
-    }, []);
+    }, [retry]);
     function start_recording() {
+        // if microphone access was not available do a retry
+        if (!mediaRecorder) {
+            setretry(++retry);
+            return;
+        }
+
+        setmicstatus(true);
         mediaRecorder.start(process.env.REACT_APP_MAX_TIME_LIMIT + 1000); // taking 1 sec extra for buffer
         console.log("started!!");
         auto_close_handler = setTimeout(() => {
@@ -147,7 +157,6 @@ function DemoMain(props) {
                         if (disable_mic) return;
                         micstatus = !micstatus;
                         if (micstatus) {
-                            setmicstatus(true);
                             start_recording();
                         } else {
                             stop_recording();

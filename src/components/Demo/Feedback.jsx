@@ -126,6 +126,13 @@ function Feedback(props) {
         }, 1000);
     }
 
+    /*
+     * This Function makes the buttons according to number of languages available in the data.json
+     * @params
+     *      list of the languages as props
+     * @return
+     *      list of buttons of the provided languages
+     */
     function renderButtons(props) {
         const languagesDict = props.data.lab2lang;
         let languages = [];
@@ -163,11 +170,13 @@ function Feedback(props) {
             </>
         );
     }
+
     async function send_feedback() {
         const payload = {
             audiofilename: props.audioFileName,
             actual_lang: selected_language,
         };
+
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/feedbackupdate/";
         axios

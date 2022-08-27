@@ -10,6 +10,7 @@ function SampleAudio(props) {
     let [showFeedback, setshowFeedback] = useState(false);
     let [showAudioElement, setshowAudioElement] = useState(false);
 
+    // Function to handle onchange event of the Dropdown
     function handleOnChange(evt) {
         setselectedValue(evt.target.value);
     }
@@ -18,11 +19,17 @@ function SampleAudio(props) {
         setpredictedLanguage("Loading");
         setshowFeedback(true);
         setpreviouslySelectedLanguage(selectedValue);
+
+        // retrieving the backend URL from the .env.local file and using appropriate end point for posting data
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/ogdemo";
+
+        // set the payload as the filename
         let payload = {
             audiofilename: selectedValue,
         };
+
+        // finally post the data to the backend using axios 🚀
         axios.post(POST_URL, payload).then((res) => {
             console.log(res);
             setpredictedLanguage(res.data.predicted);
@@ -30,25 +37,37 @@ function SampleAudio(props) {
     }
 
     function hangleAudioFetch() {
+        // retrieving the backend URL from the .env.local file and using appropriate end point for posting data
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/ogdemo-getfile";
+
         let audiohandler = document.getElementById("halwa");
+
+        // set the audio handler data to respective URL
         audiohandler.src = POST_URL + "/" + selectedValue;
+
+        // show the audio element as it contains the data
         setshowAudioElement(true);
     }
 
+    // when the selected value changes you need to change the actual language of the demo page accordingly
     useEffect(() => {
+        //if no data available yet, return
         if (!props.data) return;
+
+        // first 3 letters of audio file determine the code of the language
         let code = selectedValue.slice(0, 3);
         let language = props.data.lab2lang[code];
+
         if (code === "non") setactualLanguage("Not selected yet");
         else setactualLanguage(language);
         console.log(code, language);
-        setpredictedLanguage("Submit to view prediction");
 
+        setpredictedLanguage("Submit to view prediction");
         setshowFeedback(false);
         setshowAudioElement(false);
     }, [selectedValue]);
+
     return (
         <section className="sample-audio">
             <div
