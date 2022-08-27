@@ -1,5 +1,6 @@
 {
     "name": "nltm_website",
+    "author": "IIT Mandi and NIT Goa",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
