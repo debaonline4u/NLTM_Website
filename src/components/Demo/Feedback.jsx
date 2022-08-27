@@ -36,7 +36,7 @@ function Feedback(props) {
                 >
                     <div className="img" style={{ maxWidth: "700px" }}>
                         <h1 style={{ fontSize: "70px", color: "green" }}>
-                            <i class="fa-solid fa-circle-check"></i>
+                            <i className="fa-solid fa-circle-check"></i>
                         </h1>
                         Thank You for Submitting Your Feedback
                     </div>

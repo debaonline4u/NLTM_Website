@@ -89,7 +89,7 @@ function SampleAudio(props) {
                     onClick={hangleAudioFetch}
                     disabled={selectedValue === "none"}
                 >
-                    <i class="fa-solid fa-circle-chevron-down"></i>
+                    <i className="fa-solid fa-circle-chevron-down"></i>
                 </button>
                 <button
                     className="btn btn-primary"

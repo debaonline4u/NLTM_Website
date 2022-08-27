@@ -15,6 +15,7 @@ function DemoMain(props) {
     let [predicted_language, set_predicted_language] = useState("");
     let [audioFileName, setAudioFileName] = useState("");
     let [showFeedback, setshowFeedback] = useState(false);
+    let auto_close_handler;
 
     useEffect(() => {
         let mediaConstraints = {
@@ -37,11 +38,17 @@ function DemoMain(props) {
         );
     }, []);
     function start_recording() {
-        mediaRecorder.start(30000);
+        mediaRecorder.start(process.env.REACT_APP_MAX_TIME_LIMIT + 1000); // taking 1 sec extra for buffer
         console.log("started!!");
+        auto_close_handler = setTimeout(() => {
+            stop_recording();
+        }, process.env.REACT_APP_MAX_TIME_LIMIT);
     }
 
     function stop_recording() {
+        clearTimeout(auto_close_handler);
+        setmicstatus(false);
+        set_disable_mic(true);
         set_show_send_wrapper(true);
         console.log("stopped!!");
         mediaRecorder.stop();
@@ -143,8 +150,6 @@ function DemoMain(props) {
                             setmicstatus(true);
                             start_recording();
                         } else {
-                            setmicstatus(false);
-                            set_disable_mic(true);
                             stop_recording();
                         }
                     }}
