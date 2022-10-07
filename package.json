@@ -15,7 +15,9 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "final": "npm run build && npm run copy",
         "build": "react-scripts build && rm docs -r && mv build docs",
+        "copy": "rm -r Backend/static/ && cp -r docs/ Backend/static/",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },

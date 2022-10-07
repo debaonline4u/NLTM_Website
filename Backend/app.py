@@ -19,11 +19,16 @@ from torch import optim
 import sklearn.metrics
 from flask import Flask, jsonify, request, redirect, send_file
 from flask_cors import CORS, cross_origin
-
+from flask import send_from_directory
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+
+@app.route('/static')
+def send_report():
+    return send_from_directory('static')  # , 'index.html')
 
 
 # route for health checkup of backend service
@@ -36,7 +41,7 @@ def health():
 # route to home page
 @app.route('/')
 def home():
-    return "home page"
+    return "Go to static/index.html"
 
 
 # creating Application Config to save the audio files [ Place the path according to your OS / Storage ]
@@ -304,4 +309,4 @@ def demoGetFile(f):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

@@ -38,18 +38,22 @@ const App = () => {
                 {/* Routes here */}
                 <Routes>
                     {/* Home Route */}
-                    {["/", "/home", "/NLTM_Website/"].map((route) => (
-                        <Route
-                            key={route}
-                            path={route}
-                            element={
-                                <>
-                                    <Header data={landingPageData.Header} />
-                                    <Features data={landingPageData.Features} />
-                                </>
-                            }
-                        />
-                    ))}
+                    {["/", "/home", "/NLTM_Website/", "/static/index.html"].map(
+                        (route) => (
+                            <Route
+                                key={route}
+                                path={route}
+                                element={
+                                    <>
+                                        <Header data={landingPageData.Header} />
+                                        <Features
+                                            data={landingPageData.Features}
+                                        />
+                                    </>
+                                }
+                            />
+                        )
+                    )}
 
                     {/* About Route */}
                     <Route
