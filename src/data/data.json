@@ -183,12 +183,12 @@
             "title": "Principal Investigator (PI)",
             "people": [
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/22ccdea11091fa0cf8438881150172ee.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/1.jpg",
                     "name": "Dr. Dileep A.D.",
                     "job": "Associate Professor, School of Computing and Electrical Engineering (SCEE), IIT Mandi"
                 },
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/87b74a9157ec10e23393374f95686557.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/2.jpg",
                     "name": "Dr. Veena Thenkanidiyoor",
                     "job": "Associate Professor, Department of Computer Science and Engineering, NIT Goa"
                 }
@@ -198,7 +198,7 @@
             "title": "Co-Principal Investigator (Co-PI)",
             "people": [
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/7ffa63895177462a36db03abd09aad55.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/3.jpg",
                     "name": "Co-Principal Investigator (Co-PI)",
                     "job": "Associate Professor, School of Computing and Electrical Engineering (SCEE), IIT Mandi"
                 }
@@ -208,22 +208,22 @@
             "title": "Project Staff",
             "people": [
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/0f335aa2973959c4390cb5c7c4e9347a.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/4.jpg",
                     "name": "Muralikrishna",
                     "job": "PhD Scholar, SCEE, IIT Mandi"
                 },
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/994774aaedfcdd4cc94a9f2d6d4855b0.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/5.jpg",
                     "name": "Sujeet Kumar",
                     "job": "PhD Scholar, SCEE, IIT Mandi"
                 },
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/60b0f35b4c1744af84a6cb6b303f4b81.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/6.jpg",
                     "name": "Debashis Sahoo",
                     "job": "MS Scholar, SCEE, IIT Mandi"
                 },
                 {
-                    "img": "https://nltm-lid.iitmandi.ac.in/People/Samarth.jpg",
+                    "img": "https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/7.jpg",
                     "name": "Samarth M.",
                     "job": "M Tech Student, CSP, SCEE, IIT Mandi"
                 }

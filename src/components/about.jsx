@@ -6,7 +6,7 @@ export const About = (props) => {
                     <div className="col-xs-12 col-md-6">
                         {" "}
                         <img
-                            src="https://picsum.photos/500/400"
+                            src="https://raw.githubusercontent.com/debaonline4u/NLTM_Website/main/src/assets/about-header-image.jpg"
                             className="img-responsive"
                             alt=""
                         />{" "}
