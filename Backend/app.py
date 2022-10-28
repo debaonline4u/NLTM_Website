@@ -19,7 +19,6 @@ from torch import optim
 import sklearn.metrics
 from flask import Flask, jsonify, request, redirect, send_file
 from flask_cors import CORS, cross_origin
-from flask import send_from_directory
 
 app = Flask(__name__, static_folder="static", static_url_path="/")
 cors = CORS(app)
@@ -30,12 +29,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def index():
-    return app.send_static_file("index.html")
-
-
-@app.route('/static')
-def send_report():
-    return send_from_directory('static')  # , 'index.html')
+    return "Backend is working!"
 
 
 # route for health checkup of backend service
