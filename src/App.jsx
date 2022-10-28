@@ -60,7 +60,7 @@ const App = () => {
                         path="/about"
                         element={
                             <>
-                                <About data={landingPageData.About} />
+                                {/* <About data={landingPageData.About} /> */}
                                 <Team data={landingPageData.Team} />
                             </>
                         }

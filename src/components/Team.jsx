@@ -1,6 +1,6 @@
 export const Team = (props) => {
     return (
-        <div id="team" className="text-center">
+        <div id="team" className="text-center" style={{ marginTop: "40px" }}>
             <div className="container">
                 <div
                     className="col-md-8 col-md-offset-2 section-title"
