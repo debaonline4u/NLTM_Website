@@ -39,7 +39,7 @@ function SampleAudio(props) {
 
     async function hangleAudioFetch() {
         // retrieving the backend URL from the .env.local file and using appropriate end point for posting data
-        let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
+        let BACKEND_HOME_URL = window.serverURL;
         let POST_URL = BACKEND_HOME_URL + "/ogdemo-getfile";
 
         let audiohandler = document.getElementById("halwa");

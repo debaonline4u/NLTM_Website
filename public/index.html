@@ -56,7 +56,7 @@
 <script>
     async function setserverURL() {
         let res = await fetch("./serverurl.txt");
-        document.serverURL = await res.text();
+        window.serverURL = await res.text();
     }
     setserverURL();
 </script>
