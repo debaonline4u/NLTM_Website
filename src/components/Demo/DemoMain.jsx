@@ -157,27 +157,27 @@ function DemoMain(props) {
                 >
                     <li className="list-group-item">
                         <i className="fa-solid fa-circle-chevron-right"></i>{" "}
-                        Clicking on the microphone will start recording.
+                        &nbsp; Clicking on the microphone will start recording.
                     </li>
                     <li className="list-group-item">
                         <i className="fa-solid fa-circle-chevron-right"></i>{" "}
                         <strong>
-                            Please use only one language while speaking.
+                            &nbsp; Please use only one language while speaking.
                         </strong>
                     </li>
                     <li className="list-group-item">
                         <i className="fa-solid fa-circle-chevron-right"></i>{" "}
-                        Click on the mic again to pause the recording.
+                        &nbsp; Click on the mic again to pause the recording.
                     </li>
                     <li className="list-group-item">
                         <i className="fa-solid fa-circle-chevron-right"></i>{" "}
-                        Clicking on the send button. Our Model will predict the
-                        language.
+                        &nbsp; Clicking on the send button. Our Model will
+                        predict the language.
                     </li>
                     <li className="list-group-item">
-                        <i className="fa-solid fa-circle-chevron-right"></i> If
-                        you are not satisfied with the language predicted, you
-                        can select the right language.
+                        <i className="fa-solid fa-circle-chevron-right"></i>{" "}
+                        &nbsp; If you are not satisfied with the language
+                        predicted, you can select the right language.
                     </li>
                 </ul>
             </div>
