@@ -150,34 +150,34 @@ function DemoMain(props) {
             <div className="alert alert-warning" role="alert">
                 How to use it?
                 <ul
-                    class="list-group"
+                    className="list-group"
                     style={{
                         textAlign: "left",
                     }}
                 >
-                    <li class="list-group-item">
-                        <i class="fa-solid fa-circle-chevron-right"></i>{" "}
+                    <li className="list-group-item">
+                        <i className="fa-solid fa-circle-chevron-right"></i>{" "}
                         Clicking on the microphone will start recording.
                     </li>
-                    <li class="list-group-item">
-                        <i class="fa-solid fa-circle-chevron-right"></i>{" "}
+                    <li className="list-group-item">
+                        <i className="fa-solid fa-circle-chevron-right"></i>{" "}
                         <strong>
                             Please use only one language while speaking.
                         </strong>
                     </li>
-                    <li class="list-group-item">
-                        <i class="fa-solid fa-circle-chevron-right"></i> Click
-                        on the mic again to pause the recording.
+                    <li className="list-group-item">
+                        <i className="fa-solid fa-circle-chevron-right"></i>{" "}
+                        Click on the mic again to pause the recording.
                     </li>
-                    <li class="list-group-item">
-                        <i class="fa-solid fa-circle-chevron-right"></i>{" "}
+                    <li className="list-group-item">
+                        <i className="fa-solid fa-circle-chevron-right"></i>{" "}
                         Clicking on the send button. Our Model will predict the
                         language.
                     </li>
-                    <li class="list-group-item">
-                        <i class="fa-solid fa-circle-chevron-right"></i> If you
-                        are not satisfied with the language predicted, you can
-                        select the right language.
+                    <li className="list-group-item">
+                        <i className="fa-solid fa-circle-chevron-right"></i> If
+                        you are not satisfied with the language predicted, you
+                        can select the right language.
                     </li>
                 </ul>
             </div>
