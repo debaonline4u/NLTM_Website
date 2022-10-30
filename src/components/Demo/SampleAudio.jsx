@@ -79,7 +79,7 @@ function SampleAudio(props) {
     return (
         <section className="sample-audio">
             {servererror && (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                     Error: Cannot connect to the server!
                 </div>
             )}

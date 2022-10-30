@@ -146,6 +146,11 @@ function DemoMain(props) {
                 </div>
             </div>
             <p>{props.data && props.data.info}</p>
+
+            <div className="alert alert-warning" role="alert">
+                A simple warning alert—check it out!
+            </div>
+
             <div className="container-2">
                 <div
                     className={
