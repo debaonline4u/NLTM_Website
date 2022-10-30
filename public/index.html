@@ -53,6 +53,13 @@
         content="Spoken language identification system from the conversational speech of Indian languages and Indian English. "
     />
 </head>
+<script>
+    async function setserverURL() {
+        let res = await fetch("./serverurl.txt");
+        document.serverURL = await res.text();
+    }
+    setserverURL();
+</script>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     <div id="root"></div>
