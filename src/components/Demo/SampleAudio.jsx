@@ -89,6 +89,7 @@ function SampleAudio(props) {
                     padding: "10px",
                     margin: "10px",
                     display: "flex",
+                    flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
                 }}
@@ -97,6 +98,7 @@ function SampleAudio(props) {
                     className="form-select"
                     style={{
                         height: "100%",
+
                         padding: "8px 20px",
                     }}
                     aria-label="Default select example"
@@ -139,6 +141,7 @@ function SampleAudio(props) {
                     <i className="fa-solid fa-paper-plane"></i>
                 </button>
             </div>
+
             <div
                 className="audio-wrapper"
                 style={{
@@ -149,6 +152,7 @@ function SampleAudio(props) {
             >
                 <audio id="halwa" src="" controls type="audio/wav"></audio>
             </div>
+
             <div
                 className="actual"
                 style={{
@@ -160,6 +164,7 @@ function SampleAudio(props) {
                     Actual Language: <h2>{actualLanguage}</h2>
                 </span>
             </div>
+
             {showFeedback && (
                 <div
                     className="feedback"
