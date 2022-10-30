@@ -12,6 +12,7 @@ function Send(props) {
     let [loaderPercent, setloaderPercent] = useState(0);
     let [uploadText, setuploadText] = useState("");
     let [send_button_disabled, set_send_button_disabled] = useState(false);
+    let [servererror, setservererror] = useState(false);
 
     /*
      * This function tracks the upload status of the file
@@ -50,15 +51,17 @@ function Send(props) {
                     </div>
                 </>
             )}
+            {servererror && (
+                <div class="alert alert-danger" role="alert">
+                    Error: Cannot connect to the server!
+                </div>
+            )}
             <div className="send-controls">
                 <button
                     className="btn btn-success"
                     style={{ margin: "10px" }}
                     onClick={() => {
-                        set_send_button_disabled(true);
-                        console.log(send_button_disabled);
                         send_data();
-                        setSTATUS(UPLOAD_STATUS.UPLOADING);
                     }}
                     disabled={send_button_disabled}
                 >
@@ -98,6 +101,8 @@ function Send(props) {
 
     async function send_data() {
         let blobURL = document.getElementById("player").src;
+        set_send_button_disabled(true);
+        setSTATUS(UPLOAD_STATUS.UPLOADING);
 
         // get the audio blob
         let BLOB = await fetch(blobURL).then((r) => r.blob());
@@ -149,8 +154,15 @@ function Send(props) {
                 console.log(res.data);
                 props.set_predicted_language(res.data.predicted_lang);
                 props.setshowFeedback(true);
+                setservererror(false);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                setservererror(true);
+                setSTATUS(UPLOAD_STATUS.STOPPED);
+                set_send_button_disabled(false); // re enable send button if the uploading fails
+
+                console.log(err);
+            });
     }
 }
 export default Send;

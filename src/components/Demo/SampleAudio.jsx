@@ -9,6 +9,7 @@ function SampleAudio(props) {
     let [predictedLanguage, setpredictedLanguage] = useState("Loading");
     let [showFeedback, setshowFeedback] = useState(false);
     let [showAudioElement, setshowAudioElement] = useState(false);
+    let [servererror, setservererror] = useState(false);
 
     // Function to handle onchange event of the Dropdown
     function handleOnChange(evt) {
@@ -36,7 +37,7 @@ function SampleAudio(props) {
         });
     }
 
-    function hangleAudioFetch() {
+    async function hangleAudioFetch() {
         // retrieving the backend URL from the .env.local file and using appropriate end point for posting data
         let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
         let POST_URL = BACKEND_HOME_URL + "/ogdemo-getfile";
@@ -44,6 +45,13 @@ function SampleAudio(props) {
         let audiohandler = document.getElementById("halwa");
 
         // set the audio handler data to respective URL
+        try {
+            await fetch(POST_URL + "/" + selectedValue);
+            setservererror(false);
+        } catch (error) {
+            setservererror(true);
+            console.log("error");
+        }
         audiohandler.src = POST_URL + "/" + selectedValue;
 
         // show the audio element as it contains the data
@@ -70,6 +78,11 @@ function SampleAudio(props) {
 
     return (
         <section className="sample-audio">
+            {servererror && (
+                <div class="alert alert-danger" role="alert">
+                    Error: Cannot connect to the server!
+                </div>
+            )}
             <div
                 className="send-from-sample-files"
                 style={{
