@@ -1,3 +1,4 @@
 feature_extractor/*.wav
 feature_extractor/*.csv
 unclassified_audio_files/*.wav
+__pycache__
