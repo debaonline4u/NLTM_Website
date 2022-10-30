@@ -12,6 +12,9 @@
     #footer {
         width: 100%;
     }
+    .container-2 > h1 {
+        font-size: large;
+    }
 }
 
 .alert {
