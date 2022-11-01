@@ -177,8 +177,7 @@ function Feedback(props) {
             actual_lang: selected_language,
         };
 
-        let BACKEND_HOME_URL = process.env.REACT_APP_BACKEND_HOME_URL;
-        let POST_URL = BACKEND_HOME_URL + "/feedbackupdate/";
+        let POST_URL = window.serverURL + "/feedbackupdate/";
         axios
             .post(POST_URL, payload)
             .then((res) => {
