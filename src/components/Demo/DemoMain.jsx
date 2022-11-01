@@ -121,7 +121,7 @@ function DemoMain(props) {
             </div>
             <div className="text text-center">
                 <h5>
-                    More details about this system can be found in these papers.
+                    More details about this system can be found in these paper.
                 </h5>
                 <ul className="list-group">
                     {props.data &&
