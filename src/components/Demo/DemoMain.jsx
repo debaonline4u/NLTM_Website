@@ -91,10 +91,11 @@ function DemoMain(props) {
             <div className="text text-left">
                 <p>
                     This is a Deep Neural Network (DNN) based Language
-                    Identification system designed to identify 8 Indian
-                    languages. This model can identify Assamase, Bengali,
-                    Gujrati, Hindi, Kannada, Malayalam, Odia and Telugu. Some
-                    details about these languages can be found{" "}
+                    Identification system designed to identify 12 Indian
+                    languages. This model can identify Assamese, Bengali,
+                    English(Indian), Gujrati, Hindi, Kannada, Malayalam,
+                    Marathi, Odia, Panjabi, Tamil and Telugu. Some details about
+                    these languages can be found{" "}
                     <a
                         target="_blank"
                         rel="noreferrer"

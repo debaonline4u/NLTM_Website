@@ -10,6 +10,7 @@ import SmoothScroll from "smooth-scroll";
 import DemoMain from "./components/Demo/DemoMain";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Chart from "./components/Demo/Chart";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
     speed: 1000,
@@ -72,6 +73,7 @@ const App = () => {
                     />
                 </Routes>
             </Router>
+            <Chart data={landingPageData.Demo} />
 
             {/* Footer */}
             <Contact data={landingPageData.Contact} />

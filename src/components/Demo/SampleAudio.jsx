@@ -138,7 +138,7 @@ function SampleAudio(props) {
                         selectedValue === previouslySelectedLanguage
                     }
                 >
-                    <i className="fa-solid fa-paper-plane"></i>
+                    Predict
                 </button>
             </div>
 
