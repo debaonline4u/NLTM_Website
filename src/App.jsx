@@ -47,9 +47,7 @@ const App = () => {
                                 element={
                                     <>
                                         <Header data={landingPageData.Header} />
-                                        <Features
-                                            data={landingPageData.Features}
-                                        />
+                                        <Features />
                                     </>
                                 }
                             />

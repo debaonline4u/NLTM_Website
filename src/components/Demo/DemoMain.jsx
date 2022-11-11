@@ -125,17 +125,17 @@ function DemoMain(props) {
                     More details about this system can be found in these paper.
                 </h5>
                 <ul className="list-group">
-                    {props.data &&
-                        props.data.papers.map((ele) => (
-                            <li key={ele.name} className="list-group-item">
-                                &nbsp;&nbsp;&nbsp;
-                                <a href={ele.url}>
-                                    <i className="fa-solid fa-file-lines"></i>
-                                    &nbsp;&nbsp;
-                                    {ele.name}
-                                </a>
-                            </li>
-                        ))}
+                    <li
+                        key="SPOKEN LANGUAGE IDENTIFICATION USING BIDIRECTIONAL LSTM BASED LID SEQUENTIAL SENONES."
+                        className="list-group-item"
+                    >
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="https://cloud.iitmandi.ac.in/f/ddf6d703924d483e95af/?dl=1">
+                            <i className="fa-solid fa-file-lines"></i>
+                            &nbsp;&nbsp; SPOKEN LANGUAGE IDENTIFICATION USING
+                            BIDIRECTIONAL LSTM BASED LID SEQUENTIAL SENONES.
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div className="container">
@@ -146,7 +146,10 @@ function DemoMain(props) {
                     <h2>DEMO</h2>
                 </div>
             </div>
-            <p>{props.data && props.data.info}</p>
+            <p>
+                This page demonstrates, the classification of an input audio
+                file in any of 12 Indian languages.
+            </p>
 
             <div className="alert alert-warning" role="alert">
                 How to use it?

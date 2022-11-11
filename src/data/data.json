@@ -3,20 +3,7 @@
         "title": "Spoken Language Identification (LID)",
         "paragraph": "Spoken language identification system from the conversational speech of  Indian languages and Indian English"
     },
-    "About": {
-        "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        "lang1": ["Assamese", "Bengali", "Gujrati", "Hindi"],
-        "lang2": ["Kannada", "Malayalam", "Odia", "Telugu"]
-    },
     "Demo": {
-        "description": "This is a Deep Neural Network (DNN) based Language Identification system designed to identify 12 Indian languages. This model can identify Assamese, Bengali, English(Indian), Gujrati, Hindi, Kannada, Malayalam, Marathi, Odia, Panjabi, Tamil and Telugu. Some details about these languages can be found here. Here, we use a bidirectional long short-term memory (BLSTM) based DNN model. In this system, the input speech is first converted into a sequence of bottelneck features (BNFs). The BLSTM layers in the DNN then analyse this sequence of BNFs by dividing it into fixed-length chunks (each chunk ~600 ms) to produce LID-seq-senones. Each LID-seq-senone is a compact representation of the given fixed-lingth chunk. These LID-seq-senones are then processed by a self-attention block, which assigns a weightage to each of these LID-seq-senones based on their relevance to the LID task. Using these attention values, weighted average of these LID-seq-senones are then computed to obtain an utterance-level representation of the speech (called u-vector). This u-vector is then processed by the output layer to identify the language. ",
-        "papers": [
-            {
-                "name": "SPOKEN LANGUAGE IDENTIFICATION USING BIDIRECTIONAL LSTM BASED LID SEQUENTIAL SENONES.",
-                "url": "https://cloud.iitmandi.ac.in/f/ddf6d703924d483e95af/?dl=1"
-            }
-        ],
-        "info": "This page demonstrates, the classification of an input audio file in any of 12 Indian languages. ",
         "sampleaudionames": [
             "asmF1727.wav",
             "asmF1728.wav",
@@ -237,35 +224,5 @@
         ],
         "phone": ["+91-1905-267995", "+91-832-2404216"],
         "email": ["addileep@iitmandi.ac.in", "veenat@nitgoa.ac.in"]
-    },
-    "Features": {
-        "para1": "India exhibits unity in diversity not only in culture and religion but also in languages spoken by people. Language plays a vital role in communication among people as well as in accessing information and building an inclusive society. India is home to 22 constitutionally recognized languages. However, there exist more than 1000 spoken languages in India. In this information era, it is important to ensure that a spoken language gets due representation in digital space. In this regard, enabling the cyber physical systems to understand and interact with people using the spoken Indian languages is very important. This avoids people to opt for a second language such as English to interact with the cyber physical systems. This will further contribute to the success of the prestigious digital India Programme of the Government of India as one of the limitations faced in this arena is the need for interacting with these systems in English. This requires building systems that can analyse the spoken Indian language.",
-        "para2": "The focus of this work is on spoken language identification. The task of spoken language identification (LID) involves automatically identifying the language in which a given speech utterance was spoken. An important aspect of a spoken language is its dialects. Dialects of a given language are differences in speaking style of the first language or native language (L1) because of geographical and ethnic differences.",
-        "para3": {
-            "text": "The three important objectives of this work are as follows:",
-            "listitems": [
-                "Development of Spoken Language Identification (LID) System",
-                "Development of Dialect Identification System",
-                "Development of Language Diarization System"
-            ]
-        },
-        "para4": [
-            {
-                "title": " Development of Spoken Language Identification (LID) System",
-                "body": "The task of spoken language identification (LID) involves automatically identifying the language in which a given speech utterance was spoken. LID is very helpful in automatic speech recognition systems, speech translation systems, multi-lingual speech recognition, and in language diarization. Approaches for LID may be classified based on the features used and the methodology considered. Recently, deep neural networks (DNN) and convolution neural networks (CNN) based approaches are becoming popular for LID. In this project, we propose to explore deep learning-based approaches to build LID systems for Indian languages. The LID systems are usually vulnerable to noise and channel mismatch occurring due to the mismatch in the channels (like recording devices, type of encoding, etc.,) used to collect the speech samples. In this project we propose to build LID systems for Indian languages that are robust to noise and channel-mismatch."
-            },
-            {
-                "title": "Development of Dialect Identification System",
-                "body": "Dialect of a speech utterance acts as a virtual geo-tag for the utterance that helps in predicting the geographical location to which a speaker belongs. The dialectal variations of a spoken Indian language are a matter of concern for any automatic processing of speech utterances from that language. The project aims at addressing the issues of identifying the dialect in the conversational speech of the Indian languages. Dialect identification is difficult when compared to LID due to high interclass similarity among the dialects of a language. Very little work is done on dialect identification in Indian languages except Hindi. We also propose to explore deep learning methods for the dialect identification task."
-            },
-            {
-                "title": "Development of Language Diarization System",
-                "body": "A language diarization system involves automatically segment and identify languages in a code-switch conversation involving any one of the Indian languages and English. Code-switch refers to the switching of languages in conversational speech and is a common occurrence among multilingual Indian speakers. Most of the Indians are at least bilingual, one language being their first language or native language (L1) and the other being English. It is very important to identify the language used in a particular part of the conversation for further processing of speech in a cyber physical system such as automatic speech recognition (ASR)."
-            }
-        ],
-        "para5": {
-            "title": "Funding Agency",
-            "body": "This NLTM consortium project is sponsored by the Ministry of Electronics and Information and Technology (MeitY) New Delhi, India. This consortium is lead by Prof. (Dr.) Hema A. Murthy and Prof. (Dr.) S. Umesh of IIT Madras."
-        }
     }
 }
