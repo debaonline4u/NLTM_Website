@@ -1,4 +1,4 @@
-export const Header = (props) => {
+export const Header = () => {
     return (
         <header id="header" style={{ width: "100%" }}>
             <div className="intro">
