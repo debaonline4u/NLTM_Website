@@ -1,8 +1,4 @@
 {
-    "Header": {
-        "title": "Spoken Language Identification (LID)",
-        "paragraph": "Spoken language identification system from the conversational speech of  Indian languages and Indian English"
-    },
     "Demo": {
         "sampleaudionames": [
             "asmF1727.wav",
